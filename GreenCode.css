@@ -64,7 +64,7 @@ h1
 p,h2,h3 {margin: 16px;}
 
 .top-image {
-    width: 100%;
+    width: 65%;
     height: auto;
     margin-top: 60px; /* For å unngå overlapping med navigasjonsmenyen */
     display: block;
