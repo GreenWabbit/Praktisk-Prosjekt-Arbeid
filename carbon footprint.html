@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataoverføringsberegning for en nettside</title>
+    <script>
+        async function beregnDataOgCO2() {
+            try {
+                // Henter ressurser og debugger ut datastørrelsen
+                const response = await fetch(window.location.href);
+                const buffer = await response.arrayBuffer();
+                const dataSizeKB = buffer.byteLength / 1024;
+
+                // Antakelse: 1 GB data bruker ca. 5 kWh (kan variere)
+                const kWhPerGB = 5;
+                // Konverterer datastørrelse fra KB til GB
+                const dataSizeGB = dataSizeKB / (1024 * 1024);
+                const kWhBrukt = dataSizeGB * kWhPerGB;
+
+                // Utslippsfaktor for elektrisitet
+                const gramCO2PerKWh = 475;
+                const totalCO2Utslipp = kWhBrukt * gramCO2PerKWh;
+
+                document.getElementById('resultat').innerText = `
+                    Datastørrelse: ${dataSizeKB.toFixed(2)} KB\n
+                    Strømforbruk: ${kWhBrukt.toFixed(4)} kWh\n
+                    Karbonutslipp: ${totalCO2Utslipp.toFixed(2)} gram CO2
+                `;
+            } catch (error) {
+                document.getElementById('resultat').innerText = "Feil ved henting av data.";
+            }
+        }
+
+        window.onload = beregnDataOgCO2;
+    </script>
+</head>
+<body>
+    <h1>Estimator for dataoverføring og karbonutslipp</h1>
+    <pre id="resultat">Beregner...</pre>
+</body>
+</html>
