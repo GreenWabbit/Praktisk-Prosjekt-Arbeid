@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Green Code</title>
+    <link rel="stylesheet" href="GreenCode.css">
+    <script defer src="GreenCode.js"></script>
+</head>
+<body>
+    <!-- Tittel -->
+    <h1>Green Code</h1>
+
+    <!-- Navigasjonsmeny -->
+    <div class="navbar">
+        <a href="GreenCode.html">Home</a>
+        <a href="GreenCode-guides.html">Guides</a>
+        <div class="dropdown">
+            <button class="dropbtn">Use Cases</button>
+            <div class="dropdown-content">
+                <a href="GreenCode-artificialcases.html">Artificial Intelligence</a>
+                <a href="GreenCode-user-case-studies.html">User Case Studies</a>
+            </div>
+        </div>
+        <a href="GreenCode-about.html">About Us</a>
+        <div class="dropdown">
+            <button class="dropbtn">Contact</button>
+            <div class="dropdown-content">
+                <a href="GreenCode-contactus.html">Contact Us</a>
+                <a href="GreenCode-help.html">Help</a>
+                <a href="GreenCode-forum.html">Forum</a>
+            </div>
+        </div> 
+    </div>
+
+    <!-- Code Execution Section -->
+    <h2>Code Power Usage Calculator</h2>
+    <p>Enter JavaScript code below:</p>
+    
+    <textarea id="codeInput" placeholder="Write JavaScript code here..." rows="5" cols="50"></textarea>
+    <br>
+    <button onclick="runCode()">Run & Estimate Power usage</button>
+
+    <p class="output" id="executionTime"></p>
+    <p class="output" id="powerUsage"></p>
+
+</body>
+</html>
