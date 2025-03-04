@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .sidebar {
+            width: 40%;
+        }
+        .contact-form {
+            width: 50%;
+            background: #e6f2e6;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background-color: #c6dfc6;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #b0d4b0;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: #fff;
+            border-bottom: 2px solid #ddd;
+        }
+        .nav a {
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+        }
+        .nav a.active {
+            background-color: #c6dfc6;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo"> <button style="background:#6ea06e; color:white; border:none; padding:10px; border-radius:5px;">greencode</button> </div>
+        <div>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#" class="active">Contact us</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Address Details</h3>
+            <p>&#127968; Gullbring 47, 3802, Bø</p>
+            <p>&#9742; (+47) 420 69 666</p>
+            <p>&#128231; greencode@gmail.com</p>
+        </div>
+        <div class="contact-form">
+            <h3>Contact us</h3>
+            <input type="text" placeholder="First name">
+            <input type="text" placeholder="Last name">
+            <input type="email" placeholder="Example@email.com">
+            <textarea placeholder="Write here..."></textarea>
+            <button>Send</button>
+        </div>
+    </div>
+</body>
+</html>
