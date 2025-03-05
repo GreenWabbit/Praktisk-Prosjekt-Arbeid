@@ -4,8 +4,8 @@ body
 { background-color:rgb(255, 255, 255);}  
     
 h1 
-{color:green;
- font-size: 30px;}
+{
+ font-size: 25px;}
 
 .custom-color
 {color:#468578 ;}
@@ -176,11 +176,50 @@ html {
     }
 }
 .container {
-    background-color: #c5c5c5;  
-    
+    background-color:#468578;  
+    color: white;
+    border-radius: 10px;
+ 
+    padding-left: 2px;
 }
 .group {
    
     padding: 14px 16px;
+    text-decoration: none;
+    color:white;
    
 }
+html {
+    scroll-behavior: smooth;
+}
+p {
+    scroll-margin-top: 400px; 
+}
+a {
+    text-decoration: none;
+    color:white;
+}
+.group a:hover {
+    color: hotpink;}
+
+    a:active {
+        color: blue;
+      }
+      a:visited {
+        text-decoration: none;
+        
+    }
+
+    .infor {
+      
+    }
+    .ramme {
+        background-color:#468578;
+        color:white;
+        width: 600px;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px;
+        font-size: small;
+
+    }
