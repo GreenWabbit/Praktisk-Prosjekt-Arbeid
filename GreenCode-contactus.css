@@ -1,64 +1,14 @@
 *{font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
 
 body 
-{ background-color:rgb(255, 255, 255);} 
-
+{ background-color:rgb(255, 255, 255);}  
+    
 h1 
 {
  font-size: 25px;}
 
 .custom-color
 {color:#468578 ;}
-
-.right {
-
-    margin-left: auto;
-    margin-right: right;
-    width: 5%;
-}
-
-.p {
-text-align: center;
-}
-
-.clear {
-    clear: both;
-}
-
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 57%;
-  }
-
-.content {
-    margin: 0 0 15px;
-    overflow: hidden;
-}
-
-.caption {
-    display: block;
-}
-
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;
-    text-align: center;
-  }  
-
-  .img-with-text {
-    text-align: center;
-}
-
-.img-with-text img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;
-}
 
 .navbar 
 { overflow: hidden;
@@ -114,7 +64,7 @@ text-align: center;
 p,h2,h3 {margin: 16px;}
 
 .top-image {
-    width: 65%;
+    width: 60%;
     height: auto;
     margin-top: 60px; /* For å unngå overlapping med navigasjonsmenyen */
     display: block;
@@ -225,3 +175,51 @@ html {
         flex-direction: column;
     }
 }
+.container {
+    background-color:#468578;  
+    color: white;
+    border-radius: 10px;
+ 
+    padding-left: 2px;
+}
+.group {
+   
+    padding: 14px 16px;
+    text-decoration: none;
+    color:white;
+   
+}
+html {
+    scroll-behavior: smooth;
+}
+p {
+    scroll-margin-top: 400px; 
+}
+a {
+    text-decoration: none;
+    color:white;
+}
+.group a:hover {
+    color: hotpink;}
+
+    a:active {
+        color: blue;
+      }
+      a:visited {
+        text-decoration: none;
+        
+    }
+
+    .infor {
+      
+    }
+    .ramme {
+        background-color:#468578;
+        color:white;
+        width: 600px;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px;
+        font-size: small;
+
+    }
