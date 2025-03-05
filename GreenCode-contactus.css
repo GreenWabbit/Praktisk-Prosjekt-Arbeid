@@ -3,7 +3,9 @@
 body 
 { background-color:rgb(255, 255, 255);} 
 
-
+h1 
+{
+ font-size: 25px;}
 
 .custom-color
 {color:#468578 ;}
