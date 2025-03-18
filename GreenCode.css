@@ -184,6 +184,6 @@ html {
     }
 }
 #hovedbilde {
-  width: 300px; /* Prøv en fast størrelse */
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
