@@ -183,3 +183,7 @@ html {
         flex-direction: column;
     }
 }
+#hovedbilde {
+   max-width: 100%;
+  height: auto;
+}
