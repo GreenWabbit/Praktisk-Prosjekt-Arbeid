@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project Showcases</title>
+    </head>
+    <body>
+    
+        <section id="code-showcase">
+        
+        <div class="project" id="mongo">
+        <h2 class="project" Title></h2>
+        <a href="imglink-thumbnail.jpg"> bilde</a>
+        <p>Short project description</p>
+        <p>Code languages used: Html, CSS, Java, MySQL</p>
+        </div>
+        
+        <div class="project" id="mongo">
+            <h2 class="project" Title></h2>
+            <a href="imglink-thumbnail.jpg"> bilde</a>
+            <p>Short project description</p>
+            <p>Code languages used: Html, CSS, Java, MySQL</p>
+            </div>
+        
+        <div class="project" id="mongo">
+                <h2 class="project" Title></h2>
+                <a href="imglink-thumbnail.jpg"> bilde</a>
+                <p>Short project description</p>
+                <p>Code languages used: Html, CSS, Java, MySQL</p>
+                </div>
+        
+        <div class="project" id="mongo">
+                    <h2 class="project" Title></h2>
+                    <a href="imglink-thumbnail.jpg"> bilde</a>
+                    <p>Short project description</p>
+                    <p>Code languages used: Html, CSS, Java, MySQL</p>
+                </div>
+            </section>
+    
+    </body>
+</html>
