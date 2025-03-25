@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <h3>Q1. WHAT IS THE BEST WAY TO CODE?</h3>
+    <input type="radio" name="question1" id="correct1"> IDE <br>
+    <input type="radio" name="question1"> Notepad <br>
+    <input type="radio" name="question1"> CMD <br>
+    <input type="radio" name="question1"> 8 <br>
+
+    <h3>Q2. WHAT IS THE BEST WAY TO CODE?</h3>
+    <input type="radio" name="question2" id="correct2"> IDE <br>
+    <input type="radio" name="question2"> Notepad <br>
+    <input type="radio" name="question2"> CMD <br>
+    <input type="radio" name="question2"> 8 <br>
+
+    <h3>Q3. WHAT IS THE BEST WAY TO CODE?</h3>
+    <input type="radio" name="question3" id="correct3"> IDE <br>
+    <input type="radio" name="question3"> Notepad <br>
+    <input type="radio" name="question3"> CMD <br>
+    <input type="radio" name="question3"> 8 <br>
+
+    <br>
+    <input type="submit" name="submit" value="Submit Quiz" onclick="result(); return false;">
+    <p id="scoreDisplay"></p>
+
+    <script type="text/javascript">
+        function result() {
+            var score = 0;
+
+            if (document.getElementById('correct1').checked) {
+                score++;
+            }
+            if (document.getElementById('correct2').checked) {
+                score++;
+            }
+            if (document.getElementById('correct3').checked) {
+                score++;
+            }
+
+            document.getElementById("scoreDisplay").innerText = "Your score is: " + score;
+        }
+    </script>
+</body>
+</html>
