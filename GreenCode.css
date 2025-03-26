@@ -183,10 +183,5 @@ html {
         flex-direction: column;
     }
 }
-#hovedbilde {
-   display: block;
-  margin: auto;
-  width: 100%;
-  height: 500px;
-  
+
 }
