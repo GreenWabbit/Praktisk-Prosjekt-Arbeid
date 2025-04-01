@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', Arial, sans-serif;
+    text-decoration: none;
 }
 
 /* Body Styling */
@@ -135,7 +136,7 @@ footer a {
 }
 
 footer a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Responsive Design */
