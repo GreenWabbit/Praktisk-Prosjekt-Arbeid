@@ -132,12 +132,12 @@ footer {
 
 footer a {
     color: #76d9c5;
-    text-decoration: none;
+    text-decoration: underline;
     margin: 0 10px;
 }
 
 footer a:hover {
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 /* Responsive Design */
