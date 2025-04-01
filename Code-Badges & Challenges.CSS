@@ -92,6 +92,13 @@
     display: block;
     transition: background-color 0.3s ease;
 }
+/* Header Styling */
+h1 {
+    color: #2c7a7b;
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
 .dropdown-content a:hover {
     background-color: #4ca9a9;
