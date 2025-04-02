@@ -264,13 +264,15 @@ html {
     }
 }
 .container {
+    width: 90%;
+    max-width: 1200 px;
     background-color:#468578;  
     color: white;
     border-radius: 20px;
     padding-left: 2px;
     margin-top: 30px;
-    margin: 20px;
-    width: 800px;
+    margin: 20px auto;
+   
 }
 .group {
    
