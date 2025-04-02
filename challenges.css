@@ -20,7 +20,7 @@ body {
   min-height: 100vh;
 }
 
-/* 🌿 GreenCode Header Logo */
+/* GreenCode Header Logo */
 .logo {
   text-align: center;
   font-size: 36px;
@@ -28,7 +28,7 @@ body {
   color: var(--green);
 }
 
-/* 🌐 Navbar */
+/* Navbar */
 .navbar {
   overflow: hidden;
   background-color: var(--card);
@@ -86,7 +86,7 @@ body {
   display: block;
 }
 
-/* ✅ Challenge Box Centering */
+/* Challenge Box Centering */
 main {
   display: flex;
   justify-content: center;
