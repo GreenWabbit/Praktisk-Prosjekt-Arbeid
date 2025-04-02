@@ -108,7 +108,7 @@ p {
 img {
     max-width: 400px;
     height: auto;
-    border-radius: 8px;
+    border-radius: 10px;
     margin: 20px 0;
 }
 
