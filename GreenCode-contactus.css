@@ -276,7 +276,8 @@ html {
     background-color:#468578;  
     color: white;
     border-radius: 10px;
- 
+    margin-top: 30px;
+    margin-bottom: 20px;
     padding-left: 2px;
 }
 .group {
