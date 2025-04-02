@@ -217,3 +217,199 @@ footer {
     padding: 1em;
     margin-top: 20px;
 }
+
+:root {
+  --bg: #1e2a38;
+  --card: #2d3e50;
+  --text: #ffffff;
+  --code-bg: #3c4f64;
+  --green: #00d99f;
+  --gray: #cccccc;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 20px;
+  min-height: 100vh;
+}
+
+.challenge-container {
+  background-color: var(--card);
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 750px;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: var(--green);
+}
+
+.circle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.progress-ring__background {
+  fill: none;
+  stroke: #45566b;
+  stroke-width: 10;
+}
+
+.progress-ring__circle {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 314;
+  stroke-dashoffset: 314;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-text {
+  fill: var(--green);
+  font-size: 20px;
+  dominant-baseline: middle;
+}
+
+#questionText {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.code-snippet {
+  background-color: var(--code-bg);
+  color: var(--text);
+  font-family: monospace;
+  white-space: pre-wrap;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 5px solid var(--green);
+  margin: 10px 0;
+}
+
+#options {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+#options button,
+#checkBtn,
+#nextBtn {
+  background-color: var(--green);
+  color: var(--text);
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#options button:hover,
+#checkBtn:hover,
+#nextBtn:hover {
+  background-color: #00c68c;
+  transform: scale(1.05);
+}
+
+#options button.correct {
+  background-color: #28a745;
+}
+
+#options button.wrong {
+  background-color: #dc3545;
+}
+
+#explanation {
+  background-color: #1c313c;
+  border-left: 5px solid var(--green);
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 6px;
+  font-size: 15px;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#inputArea {
+  margin-top: 20px;
+}
+
+#userCode {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--code-bg);
+  color: var(--text);
+  font-family: monospace;
+  border: 2px solid var(--green);
+  border-radius: 6px;
+  font-size: 15px;
+  resize: vertical;
+  height: 140px;
+}
+
+#testResults {
+  margin-top: 15px;
+  font-family: monospace;
+}
+
+#resultScreen {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#scoreText {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.tip {
+  color: var(--green);
+  font-style: italic;
+}
+
+#themeToggle {
+  background: none;
+  border: 2px solid var(--green);
+  color: var(--green);
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#themeToggle:hover {
+  background: var(--green);
+  color: var(--card);
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+
+
