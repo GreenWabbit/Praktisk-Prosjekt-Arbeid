@@ -112,4 +112,13 @@ h1 {
 .dropdown-content a:hover {
     background-color: #4ca9a9;
 }
+footer a {
+    color: #76d9c5;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
 
