@@ -90,7 +90,9 @@ body {
 main {
   display: flex;
   justify-content: center;
-  padding: 40px 20px;
+  align-items: center;
+  min-height: calc(100vh - 140px); /* accounts for logo + navbar height */
+  padding: 30px 20px;
 }
 
 .challenge-container {
