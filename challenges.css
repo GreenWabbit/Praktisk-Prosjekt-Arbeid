@@ -16,6 +16,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    padding-top: 70px; /* Added padding to prevent overlap with fixed navbar */
 }
 
 /* Header Styling */
@@ -45,10 +46,11 @@ p {
     display: flex;
     justify-content: center;
     padding: 10px 0;
-    position: fixed;  /* Fix the navbar to the top */
-    top: 0;           /* Position it at the very top */
-    left: 0;          /* Make sure it spans from left to right */
-    z-index: 1000;    /* Ensure it's above other content */
+    position: fixed;  /* Fixed navbar at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 50px;  /* Adjust this value to fit the design */
 }
 
 .dropdown {
@@ -117,6 +119,11 @@ img {
     text-align: center;
     margin: 20px auto;
     max-width: 800px;
+}
+
+/* Add margin-top to prevent overlap with navbar */
+section {
+    margin-top: 80px; /* Added margin to ensure content isn't hidden under the navbar */
 }
 
 /* Footer */
