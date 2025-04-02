@@ -265,7 +265,7 @@ html {
 }
 .container {
     width: 90%;
-    max-width: 1200 px;
+    max-width: 900 px;
     background-color:#468578;  
     color: white;
     border-radius: 20px;
