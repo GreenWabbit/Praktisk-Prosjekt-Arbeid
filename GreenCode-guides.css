@@ -19,7 +19,8 @@ body {
 }
 
 li {
-
+    margin-left: 25px;
+    margin-right: 25px;
 }
 /* Header Styling */
 h1 {
