@@ -18,8 +18,8 @@ body {
     margin: 0;
 }
 li {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 20px;
+    margin-right: 20px;
     margin-top: 10px; /* example margin */
     margin-bottom: 10px; /* example margin */
     text-align: center;
