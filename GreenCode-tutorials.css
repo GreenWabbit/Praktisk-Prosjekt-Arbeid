@@ -17,7 +17,15 @@ body {
     min-height: 100vh;
     margin: 0;
 }
-
+li {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px; /* example margin */
+    margin-bottom: 10px; /* example margin */
+    text-align: center;
+    display: block; /* Ensure it's treated as a block element */
+    width: fit-content; /* Adjust width to fit the content */
+}
 /* Header Styling */
 h1 {
     color: #2c7a7b;
