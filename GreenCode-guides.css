@@ -19,7 +19,6 @@ body {
 }
 
 li {
-li {
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px; /* example margin */
@@ -28,7 +27,7 @@ li {
     display: block; /* Ensure it's treated as a block element */
     width: fit-content; /* Adjust width to fit the content */
 }
-}
+
 /* Header Styling */
 h1 {
     color: #2c7a7b;
