@@ -21,6 +21,7 @@ body {
 li {
     margin-left: 25px;
     margin-right: 25px;
+    text-align: center;
 }
 /* Header Styling */
 h1 {
