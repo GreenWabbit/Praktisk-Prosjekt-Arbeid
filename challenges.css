@@ -18,6 +18,14 @@ body {
   background-color: var(--bg);
   color: var(--text);
   margin: 0;
+  text-align: center; 
+}
+html, body {
+  height: 100%; /* Ensure the body takes up full height */
+  margin: 0; /* Remove default margin */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
 
 /* GreenCode Header Logo */
