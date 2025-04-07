@@ -62,7 +62,7 @@ p {
     display: none;
     position: absolute;
     background-color: #3b8c8e;
-    min-width: 100%;
+    min-width: 160px;
     max-height: auto;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
