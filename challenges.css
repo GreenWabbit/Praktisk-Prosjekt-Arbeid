@@ -1,3 +1,12 @@
+/* Reset and box-sizing for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* :root for theme colors */
 :root {
   --bg: #1e2a38;
   --card: #2d3e50;
@@ -7,41 +16,49 @@
   --gray: #cccccc;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
+/* Header styling */
 header {
-  position: fixed; /* Fixes the header at the top */
+  position: fixed; /* Fix the header at the top */
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #333; /* Background color for header */
-  color: white; /* Text color */
-  text-align: center; /* Center the text */
-  padding: 10px 0; /* Padding for header */
-  z-index: 1000; /* Ensures it is above other content */
-  margin-bottom: 50px;
+  background-color: #333; /* Dark background for header */
+  color: white; /* White text */
+  text-align: center; /* Center text horizontally */
+  padding: 10px 0; /* Vertical padding for header */
+  z-index: 1000; /* Ensure header is on top of other content */
+  margin-bottom: 50px; /* Space below header */
 }
+
+/* Body styling */
 body {
   background-color: var(--bg);
   color: var(--text);
   margin: 0;
-  text-align: center; 
+  text-align: center; /* Center text in body */
 }
 
-
-/* GreenCode Header Logo */
-.logo {
-  text-align: center;
-  font-size: 36px;
-  padding: 20px 0;
-  color: var(--green);
+/* Centered challenge container */
+main {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  flex-direction: column; /* Stack elements vertically */
+  min-height: calc(100vh - 140px); /* Adjust height to fit header + navbar */
+  padding: 30px 20px;
 }
 
-/* Navbar */
+/* Challenge box container */
+.challenge-container {
+  background-color: var(--card);
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 750px;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Navbar Styling */
 .navbar {
   overflow: hidden;
   background-color: var(--card);
@@ -70,6 +87,7 @@ body {
   color: var(--card);
 }
 
+/* Dropdown menu */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -100,84 +118,7 @@ body {
   display: block;
 }
 
-/* Challenge Box Centering */
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; /* Add this to stack elements vertically */
-  min-height: calc(100vh - 140px); /* accounts for logo + navbar height */
-  padding: 30px 20px;
-}
-
-.challenge-container {
-  background-color: var(--card);
-  border-radius: 12px;
-  padding: 30px;
-  max-width: 750px;
-  width: 100%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-}
-
-/* Progress Circle */
-.circle-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.progress-ring__background {
-  fill: none;
-  stroke: #45566b;
-  stroke-width: 10;
-}
-
-.progress-ring__circle {
-  fill: none;
-  stroke: var(--green);
-  stroke-width: 10;
-  stroke-linecap: round;
-  stroke-dasharray: 314;
-  stroke-dashoffset: 314;
-  transform: rotate(-90deg);
-  transform-origin: center;
-  transition: stroke-dashoffset 0.5s ease;
-}
-
-.progress-text {
-  fill: var(--green);
-  font-size: 20px;
-  dominant-baseline: middle;
-}
-
-/* Question */
-#questionText {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 18px;
-}
-
-/* Code Boxes */
-.code-snippet {
-  background-color: var(--code-bg);
-  color: var(--text);
-  font-family: monospace;
-  white-space: pre-wrap;
-  padding: 15px;
-  border-radius: 8px;
-  border-left: 5px solid var(--green);
-  margin: 10px 0;
-}
-
-/* Buttons */
-#options {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
+/* Button styling */
 #options button,
 #checkBtn,
 #nextBtn {
@@ -198,88 +139,26 @@ main {
   transform: scale(1.05);
 }
 
-#options button.correct {
-  background-color: #28a745;
-}
-
-#options button.wrong {
-  background-color: #dc3545;
-}
-
-/* Explanation + Feedback */
-#explanation {
-  background-color: #1c313c;
-  border-left: 5px solid var(--green);
-  padding: 15px;
-  margin-top: 20px;
-  border-radius: 6px;
-  font-size: 15px;
-  animation: fadeIn 0.4s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Code Editor */
-#inputArea {
-  margin-top: 20px;
-}
-
-#userCode {
-  width: 100%;
-  padding: 12px;
+/* Code snippets */
+.code-snippet {
   background-color: var(--code-bg);
   color: var(--text);
   font-family: monospace;
-  border: 2px solid var(--green);
-  border-radius: 6px;
-  font-size: 15px;
-  resize: vertical;
-  height: 140px;
-}
-
-/* Test Feedback */
-#testResults {
-  margin-top: 15px;
-  font-family: monospace;
-}
-
-/* End Screen */
-#resultScreen {
-  text-align: center;
-  margin-top: 30px;
-}
-
-#scoreText {
-  font-size: 18px;
+  white-space: pre-wrap;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 5px solid var(--green);
   margin: 10px 0;
 }
 
-.tip {
-  color: var(--green);
-  font-style: italic;
+/* Centering progress circles */
+.circle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
-/* Theme Button */
-#themeToggle {
-  background: none;
-  border: 2px solid var(--green);
-  color: var(--green);
-  font-size: 18px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-#themeToggle:hover {
-  background: var(--green);
-  color: var(--card);
-}
-
-/* Utility */
+/* Utility classes */
 .hidden {
   display: none !important;
 }
