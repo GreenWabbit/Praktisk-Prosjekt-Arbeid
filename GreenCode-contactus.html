@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="GreenCode-contactus.css">
 </head>
 <body>
-    <div class"wrapper">
-    <!-- Navigasjonsmeny -->
-      <h1 class="logo">GreenCode</h1>
-  <div class="navbar">
+    <h1 class="logo">GreenCode</h1>
+    <div class="navbar">
         <a href="index.html">Home</a>
         <div class="dropdown">
             <button class="dropbtn">Articles</button>
@@ -21,18 +19,15 @@
                 <a href="GreenCode-tutorials.html">Tutorials</a>
             </div>
         </div>
-        
         <a href="GreenCode-carbonfootprint.html">Carbonfootprint</a>
-        <a href="">Forum</a>
+        <a href="#">Forum</a>
         <div class="dropdown">
             <button class="dropbtn">Contact</button>
             <div class="dropdown-content">
                 <a href="GreenCode-contactus.html">Contact Us</a>
                 <a href="GreenCode-about-us.html">About Us</a>
-
             </div>
-        </div> 
-        
+        </div>
         <div class="dropdown">
             <button class="dropbtn">Badges & Challenges</button>
             <div class="dropdown-content">
@@ -41,6 +36,7 @@
             </div>
         </div>
     </div>
+
     <div class="container">
         <div class="sidebar">
             <h3>Address Details</h3>
@@ -49,16 +45,18 @@
             <p>&#128231; greencode@gmail.com</p>
         </div>
         <div class="contact-form">
-            <h3>Contact us</h3>
-            <input type="text" placeholder="First name">
-            <input type="text" placeholder="Last name">
-            <input type="email" placeholder="Example@email.com">
-            <textarea placeholder="Write here..."></textarea>
-            <button>Send</button>
+            <h3>Contact Us</h3>
+            <form action="#" method="post">
+                <input type="text" name="firstname" placeholder="First name" required>
+                <input type="text" name="lastname" placeholder="Last name" required>
+                <input type="email" name="email" placeholder="Example@email.com" required>
+                <textarea name="message" placeholder="Write here..." rows="5" required></textarea>
+                <button type="submit">Send</button>
+            </form>
         </div>
     </div>
 
-       <footer>
+    <footer>
         <p>&copy; 2025 GreenCode. All rights reserved.</p>
         <a href="GreenCode-guides.html">Guides</a>
         <a href="GreenCode-contactus.html">Contact Us</a>
