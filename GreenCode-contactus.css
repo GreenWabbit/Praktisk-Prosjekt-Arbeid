@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="GreenCode-contactus.css">
-    <style>
-        :root {
+  :root {
             --green-main: #2c7a7b;
             --green-accent: #468578;
             --hover: #3b8c8e;
@@ -82,5 +74,107 @@
             display: none;
             position: absolute;
             background-color: var(--hover);
-            min-width:
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            top: 100%;
+            left: 0;
+            z-index: 1050;
+        }
 
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .sidebar {
+            background-color: var(--green-accent);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .contact-form {
+            background-color: var(--green-accent);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .contact-form button {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .contact-form button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: var(--green-main);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: var(--accent-light);
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar a,
+            .dropbtn {
+                font-size: 16px;
+                padding: 8px 12px;
+            }
+
+            .logo {
+                font-size: 28px;
+                margin-top: 10px;
+            }
+
+            .container {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+        }
