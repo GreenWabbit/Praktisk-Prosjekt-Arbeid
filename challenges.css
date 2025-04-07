@@ -25,7 +25,7 @@ html, body {
   margin: 0; /* Remove default margin */
   display: flex;
   justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+
 }
 
 /* GreenCode Header Logo */
