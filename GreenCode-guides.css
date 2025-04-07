@@ -6,8 +6,8 @@
     font-family: 'Roboto', Arial, sans-serif;
 }
 
-/* Body Styling */
-body {
+/* Body Styling */ 
+/*body { Original:
     background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
@@ -16,7 +16,8 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-}
+}*/
+
 
 li {
     margin-left: 20px;
