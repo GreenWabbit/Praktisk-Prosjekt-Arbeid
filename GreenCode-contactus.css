@@ -335,12 +335,4 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
-.wrapper {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-}
 
-.wrapper > footer {
-    margin-top: auto;
-}
