@@ -23,6 +23,7 @@ header {
   text-align: center; /* Center the text */
   padding: 10px 0; /* Padding for header */
   z-index: 1000; /* Ensures it is above other content */
+  margin-bottom: 50px;
 }
 body {
   background-color: var(--bg);
