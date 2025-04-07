@@ -1,184 +1,86 @@
-/* ========== ROOT VARIABLES ========== */
-:root {
-    --green-main: #2c7a7b;
-    --green-accent: #468578;
-    --hover: #3b8c8e;
-    --light-bg: #f9f9f9;
-    --accent-light: #76d9c5;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="GreenCode-contactus.css">
+    <style>
+        :root {
+            --green-main: #2c7a7b;
+            --green-accent: #468578;
+            --hover: #3b8c8e;
+            --light-bg: #f9f9f9;
+            --accent-light: #76d9c5;
+        }
 
-/* ========== RESET ========== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', Arial, sans-serif;
-}
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
 
-body {
-    background-color: var(--light-bg);
-    color: #333;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+        * {
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
 
-/* ========== HEADER ========== */
-.logo {
-    font-size: 36px;
-    margin: 20px auto;
-    text-align: center;
-    color: var(--green-main);
-}
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--light-bg);
+            color: #333;
+            line-height: 1.6;
+        }
 
-/* ========== NAVBAR ========== */
-.navbar {
-    width: 100%;
-    background-color: var(--green-main);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    flex-wrap: wrap;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+        main {
+            flex: 1;
+        }
 
-.navbar a,
-.dropbtn {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
+        .logo {
+            font-size: 36px;
+            margin: 20px auto;
+            text-align: center;
+            color: var(--green-main);
+        }
 
-.navbar a:hover,
-.dropdown-content a:hover {
-    background-color: var(--hover);
-    border-radius: 5px;
-}
+        .navbar {
+            width: 100%;
+            background-color: var(--green-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.dropdown {
-    position: relative;
-}
+        .navbar a,
+        .dropbtn {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: var(--hover);
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    top: 100%;
-    left: 0;
-    z-index: 1050;
-}
+        .navbar a:hover,
+        .dropdown-content a:hover {
+            background-color: var(--hover);
+            border-radius: 5px;
+        }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+        .dropdown {
+            position: relative;
+        }
 
-/* ========== MAIN CONTENT ========== */
-.container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 40px;
-}
-
-/* ========== SIDEBAR ========== */
-.sidebar {
-    background-color: var(--green-accent);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    width: 100%;
-}
-
-/* ========== CONTACT FORM ========== */
-.contact-form {
-    background-color: var(--green-accent);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    width: 100%;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.contact-form button {
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.contact-form button:hover {
-    background-color: #555;
-}
-
-/* ========== FOOTER ========== */
-footer {
-    background-color: var(--green-main);
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: auto;
-    width: 100%;
-}
-
-footer a {
-    color: var(--accent-light);
-    margin: 0 10px;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* ========== RESPONSIVE ========== */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar a,
-    .dropbtn {
-        font-size: 16px;
-        padding: 8px 12px;
-    }
-
-    .logo {
-        font-size: 28px;
-        margin-top: 10px;
-    }
-
-    .container {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
-}
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--hover);
+            min-width:
 
