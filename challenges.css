@@ -20,12 +20,10 @@ body {
   margin: 0;
   text-align: center; 
 }
+
 html, body {
   height: 100%; /* Ensure the body takes up full height */
   margin: 0; /* Remove default margin */
-  display: flex;
-  justify-content: center; /* Center horizontally */
-
 }
 
 /* GreenCode Header Logo */
@@ -100,6 +98,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column; /* Add this to stack elements vertically */
   min-height: calc(100vh - 140px); /* accounts for logo + navbar height */
   padding: 30px 20px;
 }
@@ -176,7 +175,7 @@ main {
 #checkBtn,
 #nextBtn {
   background-color: var(--green);
-  color: var(--text);
+  color: var (--text);
   border: none;
   padding: 12px 20px;
   font-size: 16px;
