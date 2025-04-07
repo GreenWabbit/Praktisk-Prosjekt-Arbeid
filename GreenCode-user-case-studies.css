@@ -65,6 +65,7 @@ p {
     border-radius: 5px;
     top: 100%; /* Position dropdown below the button */
     left: 50%; /* Align dropdown with the button */
+    transform: translateX(-50%);
     z-index: 1000; /* Ensure dropdown appears above other elements */
 }
 
