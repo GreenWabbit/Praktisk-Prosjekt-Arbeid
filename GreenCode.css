@@ -65,7 +65,7 @@ p {
     border-radius: 5px;
     top: 100%; /* Position dropdown below the button */
     left: 0; /* Align dropdown with the button */
-    z-index: 1050; /* Ensure dropdown appears above other elements */
+    z-index: 1000; /* Ensure dropdown appears above other elements */
 }
 
 .dropdown:hover .dropdown-content {
