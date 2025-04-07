@@ -30,7 +30,6 @@ body {
   color: var(--text);
   margin: 0;
   text-align: center; 
-  margin-top: 60px; /* Adjust this based on header height */
 }
 
 
