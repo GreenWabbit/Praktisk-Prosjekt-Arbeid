@@ -101,9 +101,11 @@ p {
 .dropdown-content a {
     color: white;
     padding: 5px 10px;
+    font-size: 16px;
     text-decoration: none;
     display: block;
     transition: background-color 0.3s ease;
+    
 }
 
 .dropdown-content a:hover {
