@@ -34,7 +34,14 @@ ul, ol {
     padding-left: 0;
 }
 
-.navbar li {
+.navbar li { /* Original Tutorial
+
+
+ul li, ol li {
+    display: inline-block;
+    text-align: center;
+}
+*/
     margin: 0 30px;
     text-align: center;
 }
