@@ -100,7 +100,7 @@ p {
 
 .dropdown-content a {
     color: white;
-    padding: 80px 5px;
+    padding: 20px 5px;
     text-decoration: none;
     display: block;
     transition: background-color 0.3s ease;
