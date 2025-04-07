@@ -1,4 +1,13 @@
-/* General Reset */
+/* ========== ROOT VARIABLES ========== */
+:root {
+    --green-main: #2c7a7b;
+    --green-accent: #468578;
+    --hover: #3b8c8e;
+    --light-bg: #f9f9f9;
+    --accent-light: #76d9c5;
+}
+
+/* ========== RESET ========== */
 * {
     margin: 0;
     padding: 0;
@@ -6,53 +15,53 @@
     font-family: 'Roboto', Arial, sans-serif;
 }
 
-/* Body Styling */
 body {
-    background-color: #f9f9f9;
+    background-color: var(--light-bg);
     color: #333;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
-    align-items: center;
     min-height: 100vh;
-    margin: 0;
 }
 
-/* Header Styling */
-h1 {
-    color: #2c7a7b;
+/* ========== HEADER ========== */
+.logo {
     font-size: 36px;
-    margin-bottom: 20px;
-    margin-top: 30px;
+    margin: 20px auto;
     text-align: center;
+    color: var(--green-main);
 }
 
-h2 {
-    color: #2c7a7b;
-    font-size: 28px;
-    margin-bottom: 10px;
-    margin-top: 20px;
-}
-
-p {
-    margin: 16px 0;
-    font-size: 18px;
-    line-height: 1.8;
-}
-
-/* Navigation Bar */
+/* ========== NAVBAR ========== */
 .navbar {
     width: 100%;
-    background-color: #2c7a7b;
+    background-color: var(--green-main);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;  /* Adjust padding as needed */
+    padding: 10px 0;
+    flex-wrap: wrap;
     position: sticky;
     top: 0;
     z-index: 1000;
-    margin: 0; /* Ensure no margins are applied */
-    left: 0; /* Ensure the navbar starts from the very left */
+}
+
+.navbar a,
+.dropbtn {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar a:hover,
+.dropdown-content a:hover {
+    background-color: var(--hover);
+    border-radius: 5px;
 }
 
 .dropdown {
@@ -62,284 +71,114 @@ p {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #3b8c8e;
+    background-color: var(--hover);
     min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    top: 100%; /* Position dropdown below the button */
-    left: 0; /* Align dropdown with the button */
-    z-index: 1050; /* Ensure dropdown appears above other elements */
+    top: 100%;
+    left: 0;
+    z-index: 1050;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-.navbar a {
+/* ========== MAIN CONTENT ========== */
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
+}
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+    background-color: var(--green-accent);
     color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
 }
 
-.navbar a:hover {
-    background-color: #3b8c8e;
-    border-radius: 5px;
+/* ========== CONTACT FORM ========== */
+.contact-form {
+    background-color: var(--green-accent);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
 }
 
-.dropdown .dropbtn {
-    background: none;
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
     border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact-form button {
+    padding: 10px;
+    background-color: #333;
     color: white;
-    font-size: 18px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    padding: 10px 20px;
+    font-size: 16px;
 }
 
-.dropdown-content a {
-    color: white;
-    padding: 10px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s ease;
+.contact-form button:hover {
+    background-color: #555;
 }
 
-.dropdown-content a:hover {
-    background-color: #4ca9a9;
-}
-
-/* Content Section */
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin: 20px 0;
-}
-
-.center {
-    text-align: center;
-    margin: 20px auto;
-    max-width: 800px;
-}
-
-/* Footer */
+/* ========== FOOTER ========== */
 footer {
-    background-color: #2c7a7b;
+    background-color: var(--green-main);
     color: white;
     text-align: center;
     padding: 20px 0;
-    margin-top: 40px;
+    margin-top: auto;
     width: 100%;
-    display: flex;
-    justify-content: baseline;
 }
 
 footer a {
-    color: #76d9c5;
-    text-decoration: none;
+    color: var(--accent-light);
     margin: 0 10px;
+    text-decoration: none;
 }
 
 footer a:hover {
     text-decoration: underline;
 }
 
-/* Responsive Design */
+/* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
-    .navbar a {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar a,
+    .dropbtn {
         font-size: 16px;
         padding: 8px 12px;
     }
 
-    h1 {
+    .logo {
         font-size: 28px;
+        margin-top: 10px;
     }
 
-    h2 {
-        font-size: 22px;
-    }
-
-    p {
-        font-size: 16px;
-    }
-}
-
-p,h2,h3 {margin: 16px;}
-
-.top-image {
-    width: 60%;
-    height: auto;
-    margin-top: 60px; /* For å unngå overlapping med navigasjonsmenyen */
-    display: block;
-}
-
-.hero {
-    background: url('hero-image.jpg') no-repeat center center/cover;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-}
-
-.hero h1 {
-    font-size: 48px;
-}
-
-.hero p {
-    font-size: 20px;
-    margin-top: 20px;
-}
-
-section {
-    padding: 60px 20px;
-}
-
-.services, .about, .machines, .contact {
-    text-align: center;
-}
-
-.service-list, .machine-list {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.service-item, .machine-item {
-    background-color: #f4f4f4;
-    padding: 20px;
-    width: 300px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
-}
-
-.machine-item img, .service-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.contact form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.contact input, .contact textarea {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.contact button {
-    padding: 10px;
-    border: none;
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-}
-
-.contact button:hover {
-    background-color: #555;
-}
-
-.navbarbottom {
-    width: 100%;
-    background-color: #468578;
-    position: fixed;
-    bottom: 0;
-    height: 50px;
-    overflow: hidden;
-    margin: 0; /* Ensure no margins are applied */
-}
-
-.navbarbottom a {
-    float: right;
-    font-size: 16px;
-    color: white;
-    text-align: right;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-.navbarbottom a:hover {
-    background-color: #64baa9;
-}
-
-/* Stil for smidig navigasjon */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Mobilvennlig design */
-@media (max-width: 768px) {
-    .service-list, .machine-list {
+    .container {
         flex-direction: column;
+        align-items: center;
+        padding: 20px;
     }
 }
 
-.container {
-    background-color:#468578;  
-    color: white;
-    border-radius: 10px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    padding-left: 2px;
-}
-
-.group {
-    padding: 14px 16px;
-    text-decoration: none;
-    color:white;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-p {
-    scroll-margin-top: 400px; 
-}
-
-a {
-    text-decoration: none;
-    color:white;
-}
-
-.group a:hover {
-    color: hotpink;
-}
-
-a:active {
-    color: blue;
-}
-
-a:visited {
-    text-decoration: none;
-}
-
-.ramme {
-    background-color:#468578;
-    color:white;
-    width: 600px;
-    border-radius: 15px;
-    padding: 20px;
-    margin: 20px;
-    font-size: small;
-}
-
-footer a {
-    color: #76d9c5;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
