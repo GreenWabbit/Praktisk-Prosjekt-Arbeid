@@ -255,4 +255,11 @@ window.onload = () => {
   updateProgressCircle();
   loadQuestion();
 
+  const toggle = document.getElementById("themeToggle");
+  toggle.onclick = () => {
+    document.body.classList.toggle("dark");
+
+    // Optionally change emoji/icon:
+    toggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌓";
+  };
 };
