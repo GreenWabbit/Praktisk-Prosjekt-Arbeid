@@ -26,14 +26,14 @@ h1 {
     text-align: center;
 }
 
-/* Navbar Styling */
+/* Navigation Bar */
 .navbar {
     width: 100%;
     background-color: #2c7a7b;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 5px ;
+    padding: 20px 5px;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -55,20 +55,7 @@ h1 {
 
 .dropdown {
     position: relative;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #3b8c8e;
-    min-width: 100%;
-    max-height: auto;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    top: 100%; /* Position dropdown below the button */
-    left: 50%; /* Align dropdown with the button */
-    transform: translateX(-50%);
-    z-index: 1000; /* Ensure dropdown appears above other elements */
+    margin: 0 40px; /* Same spacing as other navbar items */
 }
 
 .dropdown .dropbtn {
@@ -81,7 +68,42 @@ h1 {
     margin: 0 15px;
 }
 
+.dropdown .dropbtn:hover {
+    background-color: #3b8c8e;
+    border-radius: 5px;
+}
 
+/* Dropdown Menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #3b8c8e;
+    min-width: 100%;
+    width: max-content;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%); /* Align to left of button */
+    z-index: 1000;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 10px 15px;
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap; /* prevents wrapping */
+    transition: background-color 0.3s ease;
+    margin: 0;
+}
+
+.dropdown-content a:hover {
+    background-color: #4ca9a9;
+}
+
+/* Show the dropdown on hover */
 .dropdown:hover .dropdown-content {
     display: block;
 }
