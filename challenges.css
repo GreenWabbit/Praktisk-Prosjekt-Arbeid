@@ -13,18 +13,20 @@
   box-sizing: border-box;
   font-family: 'Segoe UI', sans-serif;
 }
+
 header {
-  position: fixed; /* Fixes the header at the top */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #333; /* Background color for header */
-  color: white; /* Text color */
-  text-align: center; /* Center the text */
-  padding: 10px 0; /* Padding for header */
-  z-index: 1000; /* Ensures it is above other content */
+  background-color: #2c7a7b; /* Change from #333 to the site's green color */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1000;
   margin-bottom: 50px;
 }
+
 body {
   background-color: var(--bg);
   color: var(--text);
@@ -44,12 +46,12 @@ body {
 /* Navbar */
 .navbar {
   overflow: hidden;
-  background-color: var(--card);
+  background-color: #2c7a7b; /* Change from var(--card) to the site's green */
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center; /* Change from space-between to center like the main site */
   align-items: center;
-  padding: 10px 0;
+  padding: 20px 5px; /* Match the padding from GreenCode.css */
+  width: 100%;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 }
 
