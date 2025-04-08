@@ -1,67 +1,80 @@
 :root {
-  --bg: #1e2a38;
-  --card: #2d3e50;
-  --text: #ffffff;
-  --code-bg: #3c4f64;
-  --green: #00d99f;
+  --primary: #2c7a7b; /* Main green color from GreenCode */
+  --primary-hover: #3b8c8e; /* Hover color from GreenCode dropdown */
+  --primary-active: #4ca9a9; /* Active color from dropdown hover in GreenCode */
+  --text: #333; /* Text color from GreenCode */
+  --bg: #f9f9f9; /* Background color from GreenCode */
+  --code-bg: #f0f0f0; /* Lighter code background to match overall lighter theme */
+  --green: #2c7a7b; /* Using the site's primary green instead of bright green */
   --gray: #cccccc;
+  --white: #ffffff;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%; /* Change from #333 to the site's white color */
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  z-index: 1000;
-  margin-bottom: 50px;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
 body {
   background-color: var(--bg);
   color: var(--text);
   margin: 0;
-  text-align: center;   
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-top: 80px;
+  /* Remove flex properties that might constrain width */
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
+/* ---------- NAVBAR SECTION - CRITICAL FIX ---------- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Use viewport width to ensure full width */
+  background-color: var(--primary);
+  color: white;
+  text-align: center;
+  z-index: 1000;
+}
 
+/* Navbar - CRITICAL FIX */
+.navbar {
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0; /* Remove horizontal padding that might constrain width */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw; /* Use viewport width to ensure full width */
+  max-width: 100%; /* Ensure it doesn't exceed the viewport */
+  z-index: 1000;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
 
-
-/* GreenCode Header Logo */
+/* Logo */
 .logo {
   text-align: center;
   font-size: 36px;
   padding: 20px 0;
-  color: var(--green);
-}
-
-/* Navbar */
-.navbar {
-  overflow: hidden;
-  background-color: #2c7a7b; /* Change from var(--card) to the site's green */
-  display: flex;
-  justify-content: center; /* Change from space-between to center like the main site */
-  align-items: center;
-  padding: 20px 5px; /* Match the padding from GreenCode.css */
+  color: var(--primary);
   width: 100%;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 }
 
 .navbar a,
 .dropdown .dropbtn {
-  color: var(--text);
-  padding: 14px 20px;
+  color: white;
   text-decoration: none;
-  font-size: 16px;
+  padding: 10px 5px;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  margin: 0 40px;
   background: none;
   border: none;
   cursor: pointer;
@@ -69,57 +82,95 @@ body {
 
 .navbar a:hover,
 .dropdown:hover .dropbtn {
-  background-color: var(--green);
-  color: var(--card);
+  background-color: var(--primary-hover);
+  border-radius: 5px;
 }
 
 .dropdown {
   position: relative;
-  display: inline-block;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: var(--card);
-  min-width: 160px;
-  z-index: 1;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: var(--primary-hover);
+  min-width: 100%;
+  max-height: auto;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
 }
 
 .dropdown-content a {
-  color: var(--text);
-  padding: 12px 16px;
-  display: block;
+  color: white;
+  padding: 5px 5px;
+  font-size: 18px;
   text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+  margin: 0;
 }
 
 .dropdown-content a:hover {
-  background-color: var(--green);
-  color: var(--card);
+  background-color: var(--primary-active);
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
+/* ---------- END NAVBAR FIX SECTION ---------- */
 
 /* Challenge Box Centering */
 main {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; /* Add this to stack elements vertically */
-  min-height: calc(100vh - 140px); /* accounts for logo + navbar height */
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(100vh - 140px);
   padding: 30px 20px;
+  padding-top: 40px;
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+h1 {
+  color: var(--primary);
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h2 {
+  color: var(--primary);
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+p {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 16px;
+  font-size: 18px;
+  line-height: 1.8;
 }
 
 .challenge-container {
-  background-color: var(--card);
-  border-radius: 12px;
+  background-color: white;
+  border-radius: 8px;
   padding: 30px;
   max-width: 750px;
   width: 100%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Progress Circle */
@@ -131,13 +182,13 @@ main {
 
 .progress-ring__background {
   fill: none;
-  stroke: #45566b;
+  stroke: #e6e6e6;
   stroke-width: 10;
 }
 
 .progress-ring__circle {
   fill: none;
-  stroke: var(--green);
+  stroke: var(--primary);
   stroke-width: 10;
   stroke-linecap: round;
   stroke-dasharray: 314;
@@ -148,7 +199,7 @@ main {
 }
 
 .progress-text {
-  fill: var(--green);
+  fill: var(--primary);
   font-size: 20px;
   dominant-baseline: middle;
 }
@@ -168,7 +219,7 @@ main {
   white-space: pre-wrap;
   padding: 15px;
   border-radius: 8px;
-  border-left: 5px solid var(--green);
+  border-left: 5px solid var(--primary);
   margin: 10px 0;
 }
 
@@ -184,20 +235,20 @@ main {
 #options button,
 #checkBtn,
 #nextBtn {
-  background-color: var(--green);
-  color: var (--text);
+  background-color: var(--primary);
+  color: white;
   border: none;
   padding: 12px 20px;
   font-size: 16px;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #options button:hover,
 #checkBtn:hover,
 #nextBtn:hover {
-  background-color: #00c68c;
+  background-color: var(--primary-hover);
   transform: scale(1.05);
 }
 
@@ -211,8 +262,8 @@ main {
 
 /* Explanation + Feedback */
 #explanation {
-  background-color: #1c313c;
-  border-left: 5px solid var(--green);
+  background-color: #f5f5f5;
+  border-left: 5px solid var(--primary);
   padding: 15px;
   margin-top: 20px;
   border-radius: 6px;
@@ -236,7 +287,7 @@ main {
   background-color: var(--code-bg);
   color: var(--text);
   font-family: monospace;
-  border: 2px solid var(--green);
+  border: 2px solid var(--primary);
   border-radius: 6px;
   font-size: 15px;
   resize: vertical;
@@ -261,28 +312,70 @@ main {
 }
 
 .tip {
-  color: var(--green);
+  color: var(--primary);
   font-style: italic;
 }
 
 /* Theme Button */
 #themeToggle {
   background: none;
-  border: 2px solid var(--green);
-  color: var(--green);
+  border: 2px solid var(--primary);
+  color: var(--primary);
   font-size: 18px;
   padding: 6px 10px;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 #themeToggle:hover {
-  background: var(--green);
-  color: var(--card);
+  background: var(--primary);
+  color: white;
+}
+
+/* Footer - Added to match GreenCode.css */
+footer {
+  background-color: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  width: 100vw; /* Use viewport width to ensure full width */
+  max-width: 100%; /* Prevent overflow */
+}
+
+footer a {
+  color: #76d9c5;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
 
 /* Utility */
 .hidden {
   display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar a {
+    font-size: 16px;
+    padding: 8px 12px;
+    margin: 0 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 16px;
+  }
 }
