@@ -30,19 +30,17 @@
 
         .logo {
             font-size: 36px;
-            margin: 20px auto;
+            margin: 0 0 10px 0;
             text-align: center;
             color: var(--green-main);
         }
-
         .navbar {
             width: 100%;
             background-color: var(--green-main);
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Endret fra space-between til center */
             align-items: center;
-            padding: 10px 0;
-            flex-wrap: wrap;
+            padding: 20px 5px; /* Endret fra 10px 0 til 20px 5px */
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -52,9 +50,10 @@
         .dropbtn {
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 10px 5px;
             font-size: 18px;
             transition: background-color 0.3s ease;
+            margin: 0 40px;
             background: none;
             border: none;
             cursor: pointer;
@@ -70,17 +69,39 @@
             position: relative;
         }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: var(--hover);
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-            top: 100%;
-            left: 0;
-            z-index: 1050;
-        }
+/* Oppdater dropdown-stilen for å matche */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--hover);
+    min-width: 100%;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    top: 100%;
+    left: 50%; /* Sentrerer dropdown under knappen */
+    transform: translateX(-50%); /* Sentrerer perfekt */
+    z-index: 1000;
+}
+.dropdown-content a {
+    color: white;
+    padding: 5px 5px;
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+    margin: 0;
+    text-align: center
+}
+.dropdown .dropbtn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 0 15px;
+}
+
 
         .dropdown:hover .dropdown-content {
             display: block;
@@ -88,10 +109,12 @@
 
         .container {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
             padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .sidebar {
