@@ -10,6 +10,14 @@
   --white: #ffffff;
 }
 
+body.dark {
+  --bg: #1e2a38;
+  --card: #2d3e50;
+  --text: #ffffff;
+  --code-bg: #3c4f64;
+  --green: #00d99f;
+}
+
 * {
   margin: 0;
   padding: 0;
