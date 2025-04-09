@@ -283,5 +283,23 @@ body.dark .code-input {
   background-color: rgba(0, 0, 0, 0.2);
   color: var(--text);
   }
+
+  /* Make restart button match the style of other buttons */
+#resultScreen button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
+  }
+
+#resultScreen button:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.05);
+  }
   
 }
