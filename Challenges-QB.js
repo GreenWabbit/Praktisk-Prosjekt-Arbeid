@@ -36,50 +36,42 @@ arr.forEach(item => console.log(item));`,
     explanationWrong: "❌ The array lookup is heavier and less efficient for such a simple check."
   },
 
-  // CODE CHALLENGE
+  // FILL-IN-THE-BLANK
   {
     type: "code",
-    question: "Write a function `double(x)` that returns x * 2.",
-    starterCode: `function double(x) {
-  // your code here
-}`,
-    functionName: "double",
+    question: "Fill in the blank to create an efficient link tag that preloads critical CSS:",
+    starterCode: `<link rel="________" href="styles.css" as="style" />`,
+    functionName: "checkAnswer",
     testCases: [
-      { input: 2, expected: 4 },
-      { input: 10, expected: 20 },
-      { input: 0, expected: 0 }
+      { input: "preload", expected: true }
     ],
-    explanationCorrect: "✔️ Great job! Your function works efficiently with basic logic.",
-    explanationWrong: "❌ Check your logic — the return value doesn't match the expected output."
+    explanationCorrect: "✔️ Great! Using 'preload' for critical CSS improves page loading performance and reduces energy usage.",
+    explanationWrong: "❌ Try again. The correct answer is 'preload' - it helps optimize loading sequence for critical resources."
   },
   {
     type: "code",
-    question: "Write a greener version of string concatenation using `.join()`.",
-    starterCode: `function buildString(n) {
-  // build a string of numbers from 0 to n-1
-}`,
-    functionName: "buildString",
+    question: "Complete this HTML tag to create an image that loads only when scrolled into view:",
+    starterCode: `<img src="eco-image.webp" ________="lazy" alt="Green coding" />`,
+    functionName: "checkAnswer",
     testCases: [
-      { input: 3, expected: "012" },
-      { input: 5, expected: "01234" }
+      { input: "loading", expected: true }
     ],
-    explanationCorrect: "✔️ Using `.push()` and `.join()` is much more memory-efficient for building strings.",
-    explanationWrong: "❌ Avoid using += inside loops for strings. Use arrays and `.join()` instead."
+    explanationCorrect: "✔️ Correct! The 'loading' attribute with 'lazy' value prevents images from loading until they're needed.",
+    explanationWrong: "❌ Not quite. Use 'loading' attribute to enable lazy loading of images for better page efficiency."
   },
   {
     type: "code",
-    question: "Write a function `isAdult(user)` that safely checks if user.profile.age > 18 using optional chaining.",
-    starterCode: `function isAdult(user) {
-  // your code here
-}`,
-    functionName: "isAdult",
+    question: "Fill in the blank to reduce power consumption by minimizing DOM updates:",
+    starterCode: `const fragment = document.________();
+// Add multiple elements to fragment
+// ...
+document.body.appendChild(fragment);`,
+    functionName: "checkAnswer",
     testCases: [
-      { input: { profile: { age: 20 } }, expected: true },
-      { input: { profile: { age: 16 } }, expected: false },
-      { input: {}, expected: false }
+      { input: "createDocumentFragment", expected: true }
     ],
-    explanationCorrect: "✔️ Optional chaining avoids runtime errors and improves performance.",
-    explanationWrong: "❌ Without optional chaining, your function may crash or not behave as expected."
+    explanationCorrect: "✔️ Excellent! DocumentFragments allow you to construct DOM subtrees and insert them all at once, reducing reflows.",
+    explanationWrong: "❌ The correct answer is 'createDocumentFragment()'. This method lets you make multiple DOM changes efficiently."
   }
 ];
 
