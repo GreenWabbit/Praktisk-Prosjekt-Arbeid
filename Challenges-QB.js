@@ -22,77 +22,18 @@ arr.forEach(item => console.log(item));`,
     explanationCorrect: "✔️ WebP format is lighter and lazy loading reduces bandwidth usage and energy consumption.",
     explanationWrong: "❌ JPEG is heavier and without lazy loading it wastes resources loading offscreen content."
   },
-  
-  // FILL IN THE BLANK
   {
-    type: "fill",
-    question: "Fill in the blanks to create an energy-efficient string builder function using arrays and join():",
-    codeWithBlanks: `function buildEfficientString(n) {
-  const parts = [];
-  for (let i = 0; i < n; i++) {
-    // Add the current number to the array
-    /* FILL CODE HERE */
-  }
-  // Join the array elements into a string
-  return /* FILL CODE HERE */;
+    type: "multiple",
+    question: "Which method consumes less energy?",
+    codeA: `function isEven(n) {
+  return n % 2 === 0;
 }`,
-    solution: `function buildEfficientString(n) {
-  const parts = [];
-  for (let i = 0; i < n; i++) {
-    // Add the current number to the array
-    parts.push(i);
-  }
-  // Join the array elements into a string
-  return parts.join('');
+    codeB: `function isEven(n) {
+  return [0,2,4,6,8].includes(n % 10);
 }`,
-    functionName: "buildEfficientString",
-    testCases: [
-      { input: 3, expected: "012" },
-      { input: 5, expected: "01234" }
-    ],
-    explanationCorrect: "✔️ Great job! Using arrays with push() and join() is more efficient than string concatenation with +=.",
-    explanationWrong: "❌ Using arrays with push() and join() is more memory-efficient than string concatenation in loops."
-  },
-  {
-    type: "fill",
-    question: "Complete the lazy-loading image component to make it more eco-friendly:",
-    codeWithBlanks: `function createEcoImage(src, alt) {
-  const img = document.createElement('img');
-  img.src = src;
-  img.alt = alt;
-  
-  // Add attributes for eco-friendly loading
-  img.loading = /* FILL CODE HERE */;
-  
-  // Use modern image format if available
-  if (src.endsWith('.jpg') || src.endsWith('.png')) {
-    img.src = src.replace(/\\.(jpg|png)$/, /* FILL CODE HERE */);
-  }
-  
-  return img;
-}`,
-    solution: `function createEcoImage(src, alt) {
-  const img = document.createElement('img');
-  img.src = src;
-  img.alt = alt;
-  
-  // Add attributes for eco-friendly loading
-  img.loading = 'lazy';
-  
-  // Use modern image format if available
-  if (src.endsWith('.jpg') || src.endsWith('.png')) {
-    img.src = src.replace(/\\.(jpg|png)$/, '.webp');
-  }
-  
-  return img;
-}`,
-    functionName: "createEcoImage",
-    testCases: [
-      { input: ["photo.jpg", "A photo"], expected: { loading: "lazy", src: "photo.webp" } },
-      { input: ["icon.png", "An icon"], expected: { loading: "lazy", src: "icon.webp" } }
-    ],
-    explanationCorrect: "✔️ Excellent! Using lazy loading and WebP format significantly reduces bandwidth and energy usage.",
-    explanationWrong: "❌ The solution should use 'lazy' loading and convert images to '.webp' format for better efficiency."
+    answer: "A",
+    explanationCorrect: "✔️ Using modulus is faster and uses fewer operations than array lookups.",
+    explanationWrong: "❌ The array lookup is heavier and less efficient for such a simple check."
   },
 
   // CODE CHALLENGE
@@ -124,10 +65,26 @@ arr.forEach(item => console.log(item));`,
     ],
     explanationCorrect: "✔️ Using `.push()` and `.join()` is much more memory-efficient for building strings.",
     explanationWrong: "❌ Avoid using += inside loops for strings. Use arrays and `.join()` instead."
+  },
+  {
+    type: "code",
+    question: "Write a function `isAdult(user)` that safely checks if user.profile.age > 18 using optional chaining.",
+    starterCode: `function isAdult(user) {
+  // your code here
+}`,
+    functionName: "isAdult",
+    testCases: [
+      { input: { profile: { age: 20 } }, expected: true },
+      { input: { profile: { age: 16 } }, expected: false },
+      { input: {}, expected: false }
+    ],
+    explanationCorrect: "✔️ Optional chaining avoids runtime errors and improves performance.",
+    explanationWrong: "❌ Without optional chaining, your function may crash or not behave as expected."
   }
 ];
 
-// You'll also need to add code to handle the "fill" type in your loadQuestion function:
+let currentQuestion = 0;
+let correctAnswers = 0;
 
 function loadQuestion() {
   const q = questions[currentQuestion];
@@ -159,11 +116,11 @@ function loadQuestion() {
       <button onclick="selectAnswer('A')">Option A</button>
       <button onclick="selectAnswer('B')">Option B</button>
     `;
-  } else if (q.type === "code" || q.type === "fill") {
+  } else if (q.type === "code") {
     inputArea.style.display = "block";
     codeA.style.display = "block";
-    codeA.textContent = q.type === "fill" ? q.codeWithBlanks : q.starterCode;
-    document.getElementById("userCode").value = q.type === "fill" ? q.codeWithBlanks : q.starterCode;
+    codeA.textContent = q.starterCode;
+    document.getElementById("userCode").value = q.starterCode;
   }
 }
 
