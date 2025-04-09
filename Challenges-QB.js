@@ -303,6 +303,6 @@ window.onload = () => {
     document.body.classList.toggle("dark");
 
     // Optionally change emoji/icon:
-    toggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌓";
+    toggle.textContent = document.body.classList.contains("dark") ? "🌓" : "☀️";
   };
 };
