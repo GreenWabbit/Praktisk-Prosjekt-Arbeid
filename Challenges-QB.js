@@ -41,10 +41,7 @@ arr.forEach(item => console.log(item));`,
     type: "code",
     question: "Fill in the blank to create an efficient link tag that preloads critical CSS:",
     starterCode: `<link rel="________" href="styles.css" as="style" />`,
-    functionName: "checkAnswer",
-    testCases: [
-      { input: "preload", expected: true }
-    ],
+    blankWord: "preload",
     explanationCorrect: "✔️ Great! Using 'preload' for critical CSS improves page loading performance and reduces energy usage.",
     explanationWrong: "❌ Try again. The correct answer is 'preload' - it helps optimize loading sequence for critical resources."
   },
@@ -52,10 +49,7 @@ arr.forEach(item => console.log(item));`,
     type: "code",
     question: "Complete this HTML tag to create an image that loads only when scrolled into view:",
     starterCode: `<img src="eco-image.webp" ________="lazy" alt="Green coding" />`,
-    functionName: "checkAnswer",
-    testCases: [
-      { input: "loading", expected: true }
-    ],
+    blankWord: "loading",
     explanationCorrect: "✔️ Correct! The 'loading' attribute with 'lazy' value prevents images from loading until they're needed.",
     explanationWrong: "❌ Not quite. Use 'loading' attribute to enable lazy loading of images for better page efficiency."
   },
@@ -66,10 +60,7 @@ arr.forEach(item => console.log(item));`,
 // Add multiple elements to fragment
 // ...
 document.body.appendChild(fragment);`,
-    functionName: "checkAnswer",
-    testCases: [
-      { input: "createDocumentFragment", expected: true }
-    ],
+    blankWord: "createDocumentFragment",
     explanationCorrect: "✔️ Excellent! DocumentFragments allow you to construct DOM subtrees and insert them all at once, reducing reflows.",
     explanationWrong: "❌ The correct answer is 'createDocumentFragment()'. This method lets you make multiple DOM changes efficiently."
   }
@@ -109,10 +100,22 @@ function loadQuestion() {
       <button onclick="selectAnswer('B')">Option B</button>
     `;
   } else if (q.type === "code") {
-    inputArea.style.display = "block";
+    // Create an interactive code block with an input field
+    const codeWithInput = q.starterCode.replace("________", 
+      '<span class="code-input-wrapper"><input type="text" class="code-input" id="codeInput"></span>');
+    
     codeA.style.display = "block";
-    codeA.textContent = q.starterCode;
-    document.getElementById("userCode").value = q.starterCode;
+    codeA.innerHTML = codeWithInput; // Using innerHTML to render the HTML input
+
+    // Show the check button
+    inputArea.style.display = "block";
+    document.getElementById("userCode").style.display = "none"; // Hide the textarea
+    
+    // Focus on the input field
+    setTimeout(() => {
+      const inputField = document.getElementById("codeInput");
+      if (inputField) inputField.focus();
+    }, 100);
   }
 }
 
@@ -137,39 +140,20 @@ function selectAnswer(choice) {
 
 function checkInputAnswer() {
   const q = questions[currentQuestion];
-  const userCode = document.getElementById("userCode").value;
+  const userInput = document.getElementById("codeInput").value.trim();
   const resultsDiv = document.getElementById("testResults");
   resultsDiv.innerHTML = "";
-  let passedAll = true;
-
-  try {
-    const testFunc = new Function(`${userCode}; return ${q.functionName};`)();
-
-    q.testCases.forEach(({ input, expected }, idx) => {
-      let result;
-      try {
-        const inputVal = typeof input === "object" ? JSON.parse(JSON.stringify(input)) : input;
-        result = testFunc(inputVal);
-        const passed = JSON.stringify(result) === JSON.stringify(expected);
-        if (!passed) passedAll = false;
-        const color = passed ? "#00d99f" : "#f44336";
-        resultsDiv.innerHTML += `<div style="color: ${color};">Test ${idx + 1}: ${q.functionName}(${JSON.stringify(input)}) → ${passed ? "✅" : `❌ (Expected ${JSON.stringify(expected)}, got ${JSON.stringify(result)})`}</div>`;
-      } catch (err) {
-        resultsDiv.innerHTML += `<div style="color: red;">Test ${idx + 1} Error: ${err.message}</div>`;
-        passedAll = false;
-      }
-    });
-
-    if (passedAll) {
-      correctAnswers++;
-      showExplanation(q.explanationCorrect);
-      document.getElementById("nextBtn").disabled = false;
-    } else {
-      showExplanation(q.explanationWrong);
-    }
-  } catch (err) {
-    resultsDiv.innerHTML = `<p style="color:red;">❌ Code Error: ${err.message}</p>`;
-    showExplanation("Your code has a syntax or runtime error. Please fix it.");
+  
+  const isCorrect = userInput === q.blankWord;
+  
+  if (isCorrect) {
+    correctAnswers++;
+    showExplanation(q.explanationCorrect);
+    document.getElementById("nextBtn").disabled = false;
+    resultsDiv.innerHTML = `<div style="color: #00d99f;">Test: ✅ Correct!</div>`;
+  } else {
+    showExplanation(q.explanationWrong);
+    resultsDiv.innerHTML = `<div style="color: #f44336;">Test: ❌ (Expected "${q.blankWord}", got "${userInput}")</div>`;
   }
 }
 
@@ -234,7 +218,6 @@ function showResults() {
     origin: { y: 0.5 }
   });
 }
-
 
 // Theme toggle
 document.getElementById("themeToggle").onclick = () => {
