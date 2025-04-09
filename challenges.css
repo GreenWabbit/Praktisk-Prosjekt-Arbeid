@@ -10,15 +10,6 @@
   --white: #ffffff;
 }
 
-body.dark {
-  --bg: #1e2a38;
-  --card: #2d3e50;
-  --text: #ffffff;
-  --code-bg: #3c4f64;
-  --green: #00d99f;
-}
-
-
 * {
   margin: 0;
   padding: 0;
@@ -29,156 +20,41 @@ body.dark {
 body {
   background-color: var(--bg);
   color: var(--text);
-  margin: 0;
   line-height: 1.6;
   min-height: 100vh;
-  padding-top: 80px;
-  /* Remove flex properties that might constrain width */
   width: 100%;
-  overflow-x: hidden; /* Prevent horizontal scrollbar */
-}
-
-/* ---------- NAVBAR SECTION - CRITICAL FIX ---------- */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw; /* Use viewport width to ensure full width */
-  background-color: var(--primary);
-  color: white;
-  text-align: center;
-  z-index: 1000;
-}
-
-/* Navbar - CRITICAL FIX */
-.navbar {
-  background-color: var(--primary);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding: 20px 0; /* Remove horizontal padding that might constrain width */
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100vw; /* Use viewport width to ensure full width */
-  max-width: 100%; /* Ensure it doesn't exceed the viewport */
-  z-index: 1000;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  /* Removed padding-top since the header already has positioning */
 }
 
-/* Logo */
-.logo {
-  text-align: center;
-  font-size: 36px;
-  padding: 20px 0;
-  color: var(--primary);
+/* Header inherits from GreenCode.css but adding full width explicitly */
+header {
   width: 100%;
 }
 
-.navbar a,
-.dropdown .dropbtn {
-  color: white;
-  text-decoration: none;
-  padding: 10px 5px;
-  font-size: 18px;
-  transition: background-color 0.3s ease;
-  margin: 0 40px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+/* Challenge-specific styling starts here */
+/* These styles override or extend GreenCode.css */
 
-.navbar a:hover,
-.dropdown:hover .dropbtn {
-  background-color: var(--primary-hover);
-  border-radius: 5px;
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: var(--primary-hover);
-  min-width: 100%;
-  max-height: auto;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1001;
-}
-
-.dropdown-content a {
-  color: white;
-  padding: 5px 5px;
-  font-size: 18px;
-  text-decoration: none;
-  display: block;
-  transition: background-color 0.3s ease;
-  margin: 0;
-}
-
-.dropdown-content a:hover {
-  background-color: var(--primary-active);
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-/* ---------- END NAVBAR FIX SECTION ---------- */
-
-/* Challenge Box Centering */
 main {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
-  min-height: calc(100vh - 140px);
-  padding: 30px 20px;
-  padding-top: 40px;
-  margin: 0 auto;
-}
-
-.center {
-  text-align: center;
-  margin: 20px auto;
   max-width: 800px;
-}
-
-h1 {
-  color: var(--primary);
-  font-size: 36px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-h2 {
-  color: var(--primary);
-  font-size: 28px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-p {
-  margin-left: 25px;
-  margin-right: 25px;
-  margin-bottom: 16px;
-  font-size: 18px;
-  line-height: 1.8;
+  min-height: calc(100vh - 200px); /* Adjusted for header height */
+  padding: 30px 20px;
+  margin-top: 120px; /* Add margin to account for fixed header */
 }
 
 .challenge-container {
   background-color: white;
   border-radius: 8px;
   padding: 30px;
-  max-width: 750px;
   width: 100%;
+  max-width: 750px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -230,6 +106,7 @@ p {
   border-radius: 8px;
   border-left: 5px solid var(--primary);
   margin: 10px 0;
+  text-align: left;
 }
 
 /* Buttons */
@@ -278,6 +155,7 @@ p {
   border-radius: 6px;
   font-size: 15px;
   animation: fadeIn 0.4s ease;
+  text-align: left;
 }
 
 @keyframes fadeIn {
@@ -288,6 +166,7 @@ p {
 /* Code Editor */
 #inputArea {
   margin-top: 20px;
+  width: 100%;
 }
 
 #userCode {
@@ -307,6 +186,7 @@ p {
 #testResults {
   margin-top: 15px;
   font-family: monospace;
+  text-align: left;
 }
 
 /* End Screen */
@@ -335,32 +215,14 @@ p {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 #themeToggle:hover {
   background: var(--primary);
   color: white;
-}
-
-/* Footer - Added to match GreenCode.css */
-footer {
-  background-color: var(--primary);
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  margin-top: 40px;
-  width: 100vw; /* Use viewport width to ensure full width */
-  max-width: 100%; /* Prevent overflow */
-}
-
-footer a {
-  color: #76d9c5;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-footer a:hover {
-  text-decoration: underline;
 }
 
 /* Utility */
@@ -370,21 +232,18 @@ footer a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .navbar a {
-    font-size: 16px;
-    padding: 8px 12px;
-    margin: 0 20px;
+  main {
+    padding: 20px 15px;
   }
-
-  h1 {
-    font-size: 28px;
+  
+  .challenge-container {
+    padding: 20px;
   }
-
-  h2 {
-    font-size: 22px;
-  }
-
-  p {
-    font-size: 16px;
+  
+  #options button,
+  #checkBtn,
+  #nextBtn {
+    padding: 10px 15px;
+    font-size: 14px;
   }
 }
