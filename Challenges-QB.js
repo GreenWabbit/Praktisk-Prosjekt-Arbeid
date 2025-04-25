@@ -211,7 +211,7 @@ function showResults() {
   const scorePercent = Math.round((correctAnswers / questions.length) * 100);
   document.getElementById("scoreText").textContent = `You got ${correctAnswers}/${questions.length} correct (${scorePercent}%)`;
 
-  // 🎉 Confetti!
+  // Confetti
   confetti({
     particleCount: 150,
     spread: 100,
