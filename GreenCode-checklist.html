@@ -8,7 +8,6 @@
     <link rel="icon" href="https://www.iconsdb.com/icons/preview/green/leaf-xxl.png" type="image/png">
 </head>
 <body>
-    <!-- Navbar Top med logo og brukerinfo -->
     <div class="navbar-top">
         <h1 class="logo">GreenCode</h1>
         <div id="user-info">
@@ -17,9 +16,7 @@
             <a id="auth-btn" class="login-btn" href="#">Logg inn</a>
         </div>
     </div>
-    
-    <!-- Navigasjonsmeny -->
-    <div class="navbar">
+        <div class="navbar">
         <a href="index.html">Home</a>
         <div class="dropdown">
             <button class="dropbtn">Articles</button>
@@ -32,7 +29,7 @@
         </div>
         
         <a href="GreenCode-carbonfootprint.html">Carbonfootprint</a>
-        <a href="">Forum</a>
+        <a href="https://github.com/GreenWabbit/Praktisk-Prosjekt-Arbeid/discussions" target="_blank">Forum</a>
         <div class="dropdown">
             <button class="dropbtn">Contact</button>
             <div class="dropdown-content">
@@ -40,7 +37,6 @@
                 <a href="GreenCode-about-us.html">About Us</a>
             </div>
         </div> 
-        
         <div class="dropdown">
             <button class="dropbtn">Badges & Challenges</button>
             <div class="dropdown-content">
@@ -49,7 +45,6 @@
             </div>
         </div>
     </div>
-
     <div class="container">
         <h1>Greencoding checklist</h1>
         <div class="group">
@@ -88,8 +83,6 @@
             <a href="#sus">Sustainable Coding Habits</a>
          </div>
     </div>
-
-    <!-- Container for dynamisk badge-visning -->
     <div id="firestore-badges" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 40px auto; max-width: 1000px;"></div>
 
     <div class="infor">
@@ -116,7 +109,6 @@
         <a href="GreenCode-contactus.html">Contact Us</a>
     </footer>
 
-<!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
@@ -126,7 +118,6 @@
   import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
   import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
   
-  // Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyCDtb0s8if31AXSdoIao_N4sIODaeVPM98",
     authDomain: "greencode-project-49744.firebaseapp.com",
@@ -137,12 +128,10 @@
     measurementId: "G-8FZXZ885MN"
   };
   
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
   
-  // Default badge data
   const DEFAULT_BADGES = {
     "Badge1": {
       Navn: "Universalbadge",
@@ -151,9 +140,7 @@
     }
   };
   
-  // Main authentication function
   function initializeAuth() {
-    // Only run if needed elements exist
     const authBtn = document.getElementById("auth-btn");
     const badgeContainer = document.getElementById("badge-container");
     const userName = document.getElementById("user-name");
@@ -163,14 +150,11 @@
       return;
     }
     
-    // Handle auth state changes
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        // User is signed in
         const name = user.displayName || "Bruker";
         userName.textContent = `Hei, ${name}!`;
     
-        // Update button to logout
         authBtn.textContent = "Logg ut";
         authBtn.href = "#";
         authBtn.addEventListener("click", (e) => {
@@ -178,31 +162,25 @@
           signOut(auth);
         });
     
-        // Set a loading message
         badgeContainer.textContent = "Laster badges...";
     
         try {
-          // First, check if the user has a badges document
           const userBadgeDocRef = doc(db, "badges", user.uid);
           const userBadgeDocSnap = await getDoc(userBadgeDocRef);
           
-          // If no badge document exists for the user, create one with default badges
           if (!userBadgeDocSnap.exists()) {
             console.log("No badge document found for user. Creating default badges.");
             
-            // First, make sure the default badges exist in the collection
             for (const [badgeId, badgeData] of Object.entries(DEFAULT_BADGES)) {
               const badgeRef = doc(db, "badges", badgeId);
               const badgeSnap = await getDoc(badgeRef);
               
               if (!badgeSnap.exists()) {
-                // Create the badge if it doesn't exist
                 await setDoc(badgeRef, badgeData);
                 console.log(`Created default badge: ${badgeId}`);
               }
             }
             
-            // Create the user's badge document with the default badge
             await setDoc(userBadgeDocRef, {
               earnedBadges: Object.keys(DEFAULT_BADGES)
             });
@@ -210,7 +188,6 @@
             console.log("Created default badge document for user");
           }
           
-          // Now fetch the user's badges (which should exist now)
           const updatedBadgeDocSnap = await getDoc(userBadgeDocRef);
           
           if (updatedBadgeDocSnap.exists()) {
@@ -222,10 +199,8 @@
               return;
             }
             
-            // Clear the badge container
             badgeContainer.innerHTML = "";
             
-            // Process each badge
             for (const badgeId of earnedBadgeIds) {
               try {
                 const badgeDocRef = doc(db, "badges", badgeId);
@@ -234,12 +209,10 @@
                 if (badgeDocSnap.exists()) {
                   const badgeData = badgeDocSnap.data();
                   
-                  // Get badge properties with fallbacks
                   const iconUrl = badgeData.Ikon || "";
                   const badgeName = badgeData.Navn || "Badge";
                   const badgeDesc = badgeData.Beskrivelse || "";
                   
-                  // Create image element
                   const img = document.createElement("img");
                   img.src = iconUrl;
                   img.alt = badgeName;
@@ -250,12 +223,10 @@
                   img.style.marginLeft = "5px";
                   img.style.borderRadius = "50%";
                   
-                  // Add error handling
                   img.onerror = function() {
                     console.error(`Failed to load image for badge: ${badgeId}`);
                     this.style.display = "none";
                     
-                    // Add text fallback
                     const fallbackSpan = document.createElement("span");
                     fallbackSpan.textContent = badgeName.charAt(0);
                     fallbackSpan.title = badgeName;
@@ -288,13 +259,11 @@
           badgeContainer.textContent = "Feil ved lasting av badges.";
         }
       } else {
-        // User is signed out
         userName.textContent = "";
         badgeContainer.textContent = "";
         authBtn.textContent = "Logg inn";
         authBtn.href = "login.html";
         
-        // Remove any event listeners
         const newAuthBtn = authBtn.cloneNode(true);
         authBtn.parentNode.replaceChild(newAuthBtn, authBtn);
         authBtn = newAuthBtn;
@@ -302,10 +271,8 @@
     });
   }
   
-  // Initialize when DOM is fully loaded
   document.addEventListener('DOMContentLoaded', initializeAuth);
   
-  // Export functions that might be needed elsewhere
   export { auth, db };
 </script>
 
