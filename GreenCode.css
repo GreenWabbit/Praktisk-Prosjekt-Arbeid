@@ -1,4 +1,3 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -41,19 +40,34 @@ p {
     line-height: 1.8;
 }
 
-/* Navigation Bar */
+/* Navigation Bar - STANDARDIZED */
 .navbar {
     width: 100%;
     background-color: #2c7a7b;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 5px ;
+    padding: 20px 5px;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    margin: 0 40px;
+}
+
+.navbar a:hover {
+    background-color: #3b8c8e;
+    border-radius: 5px;
+}
+
+/* Dropdown Navigation */
 .dropdown {
     position: relative;
 }
@@ -76,20 +90,6 @@ p {
     display: block;
 }
 
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 5px;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-    margin: 0 40px;
-}
-
-.navbar a:hover {
-    background-color: #3b8c8e;
-    border-radius: 5px;
-}
-
 .dropdown .dropbtn {
     background: none;
     border: none;
@@ -108,52 +108,123 @@ p {
     display: block;
     transition: background-color 0.3s ease;
     margin: 0;
-    
 }
 
 .dropdown-content a:hover {
     background-color: #4ca9a9;
 }
 
-/* Content Section */
-img {
+/* Navbar Top Styling - ADDED */
+.navbar-top {
+    width: 100%;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    color: #2c7a7b;
+    margin-bottom: 0;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+#user-name {
+    font-weight: bold;
+}
+
+#badge-container {
+    display: flex;
+    align-items: center;
+}
+
+.login-btn {
+    background-color: #2c7a7b;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #3b8c8e;
+}
+
+/* Firebase Image Handling - ADDED */
+.firebase-image {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
     margin: 20px 0;
+    display: block;
 }
 
-.center {
-    text-align: center;
-    margin: 20px auto;
-    max-width: 800px;
+.badge img.firebase-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin: 10px auto;
 }
 
-/* Footer */
-footer {
-    background-color: #2c7a7b;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-    width: 100%;
+.firebase-image:not([src]), 
+.firebase-image[src=""], 
+.firebase-image[src="undefined"], 
+.firebase-image[src="null"] {
+    min-height: 80px;
+    background-color: #f0f0f0;
+    position: relative;
 }
 
-footer a {
-    color: #76d9c5;
-    text-decoration: none;
-    margin: 0 10px;
+.firebase-image:not([src])::after, 
+.firebase-image[src=""]::after, 
+.firebase-image[src="undefined"]::after, 
+.firebase-image[src="null"]::after {
+    content: "Image not available";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #888;
+    font-size: 14px;
 }
 
-footer a:hover {
-    text-decoration: underline;
+#badge-container img.firebase-image {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 5px;
+    object-fit: cover;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .navbar-top {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    #user-info {
+        margin-left: 0;
+        margin-top: 10px;
+        flex-direction: column;
+    }
+    
     .navbar a {
         font-size: 16px;
         padding: 8px 12px;
+        margin: 0 15px;
+    }
+    
+    .navbar {
+        flex-wrap: wrap;
     }
 
     h1 {
