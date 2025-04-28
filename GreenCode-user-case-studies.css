@@ -40,7 +40,7 @@ p {
     line-height: 1.8;
 }
 
-/* Navigation Bar */
+/* Navigation Bar - STANDARDIZED */
 .navbar {
     width: 100%;
     background-color: #2c7a7b;
@@ -121,6 +121,52 @@ img {
     margin: 20px 0;
 }
 
+/* Firebase Image Handling - ADDED */
+.firebase-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
+    display: block;
+}
+
+.badge img.firebase-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin: 10px auto;
+}
+
+.firebase-image:not([src]), 
+.firebase-image[src=""], 
+.firebase-image[src="undefined"], 
+.firebase-image[src="null"] {
+    min-height: 80px;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+.firebase-image:not([src])::after, 
+.firebase-image[src=""]::after, 
+.firebase-image[src="undefined"]::after, 
+.firebase-image[src="null"]::after {
+    content: "Image not available";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #888;
+    font-size: 14px;
+}
+
+#badge-container img.firebase-image {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 5px;
+    object-fit: cover;
+}
+
 .center {
     text-align: center;
     margin: 20px auto;
@@ -147,8 +193,62 @@ footer a:hover {
     text-decoration: underline;
 }
 
+/* Navbar Top Styling - STANDARDIZED */
+.navbar-top {
+    width: 100%;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}   
+
+.logo {
+    color: #2c7a7b;
+    margin-bottom: 0;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+#user-name {
+    font-weight: bold;
+}
+
+#badge-container {
+    display: flex;
+    align-items: center;
+}
+
+.login-btn {
+    background-color: #2c7a7b;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #3b8c8e;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+    .navbar-top {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    #user-info {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
     .navbar a {
         font-size: 16px;
         padding: 8px 12px;
