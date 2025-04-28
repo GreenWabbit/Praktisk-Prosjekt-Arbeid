@@ -24,16 +24,15 @@
                 <a href="GreenCode-tutorials.html">Tutorials</a>
             </div>
         </div>
-        
         <a href="GreenCode-carbonfootprint.html">Carbonfootprint</a>
-        <a href="">Forum</a>
+        <a href="https://github.com/GreenWabbit/Praktisk-Prosjekt-Arbeid/discussions" target="_blank">Forum</a>
         <div class="dropdown">
             <button class="dropbtn">Contact</button>
             <div class="dropdown-content">
                 <a href="GreenCode-contactus.html">Contact Us</a>
                 <a href="GreenCode-about-us.html">About Us</a>
+            </div>
         </div>
-        </div> 
         <div class="dropdown">
             <button class="dropbtn">Badges & Challenges</button>
             <div class="dropdown-content">
@@ -43,19 +42,21 @@
         </div>
     </div>
 </header>
-    <body>
+<body>
     <div class = "badge-container">
-        <div class="badge">
+    <div class="badge">
         <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlgjIU8lmitI_JBlu3u7hSJIjAIUTNLRn-vg49KeWaM2IZJlBQ6pVPqAK6RssznvIqq_8&usqp=CAU" alt="Badge Tier 1-4">
         <h4>Show off your commitment to the site with one of your favorite cartoon characters</h4>
         <p>Description: Upgrade your profile with these awesome badges by interacting with other users on the forum.</p>
     </div>
+
     <div class="badge">
         <img src="https://s3-mittlag-prod.innocode.dev/production/uploads/image/image/418938/article_img_1548848572973.jpg" alt="Badge tier 1">
         <h4>First Login</h4>
         <p>Description: Awarded for logging in for the first time.</p>
         <p>Criteria: User must log in to their account.</p>
     </div>
+
     <div class="badge">
         <img src="https://img.kidplan.com/storyimage/?id=c5249777-07ee-441a-bcf0-eed22deb86cf.png&oid=832&token=&size=f2048x1440" alt="Badge Tier 4">
         <h4>10 Posts</h4>
@@ -69,7 +70,8 @@
         <p>Description: Awarded for posting 5 comments.</p>
         <p>Criteria: User must post 5 times.</p>
      </div>
-    <div class="badge">
+
+     <div class="badge">
         <img src="https://no.swewe.net/upimage/80/dd/80dd8f140e7fecf3e65eea327bc434a9.jpg" alt="Badge Tier 2">
         <h4>2 Post badge</h4>
         <p>Description: Awarded for posting 2 comments.</p>
@@ -86,7 +88,6 @@
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
         import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
         
-        // Firebase configuration
         const firebaseConfig = {
           apiKey: "AIzaSyCDtb0s8if31AXSdoIao_N4sIODaeVPM98",
           authDomain: "greencode-project-49744.firebaseapp.com",
@@ -97,12 +98,10 @@
           measurementId: "G-8FZXZ885MN"
         };
         
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
         
-        // Default badge data
         const DEFAULT_BADGES = {
           "Badge1": {
             Navn: "Universalbadge",
@@ -111,9 +110,7 @@
           }
         };
         
-        // Main authentication function
         function initializeAuth() {
-          // Only run if needed elements exist
           const authBtn = document.getElementById("auth-btn");
           const badgeContainer = document.getElementById("badge-container");
           const userName = document.getElementById("user-name");
@@ -123,14 +120,11 @@
             return;
           }
           
-          // Handle auth state changes
           onAuthStateChanged(auth, async (user) => {
             if (user) {
-              // User is signed in
               const name = user.displayName || "Bruker";
               userName.textContent = `Hei, ${name}!`;
           
-              // Update button to logout
               authBtn.textContent = "Logg ut";
               authBtn.href = "#";
               authBtn.addEventListener("click", (e) => {
@@ -138,31 +132,25 @@
                 signOut(auth);
               });
           
-              // Set a loading message
               badgeContainer.textContent = "Laster badges...";
           
               try {
-                // First, check if the user has a badges document
                 const userBadgeDocRef = doc(db, "badges", user.uid);
                 const userBadgeDocSnap = await getDoc(userBadgeDocRef);
                 
-                // If no badge document exists for the user, create one with default badges
                 if (!userBadgeDocSnap.exists()) {
                   console.log("No badge document found for user. Creating default badges.");
                   
-                  // First, make sure the default badges exist in the collection
                   for (const [badgeId, badgeData] of Object.entries(DEFAULT_BADGES)) {
                     const badgeRef = doc(db, "badges", badgeId);
                     const badgeSnap = await getDoc(badgeRef);
                     
                     if (!badgeSnap.exists()) {
-                      // Create the badge if it doesn't exist
                       await setDoc(badgeRef, badgeData);
                       console.log(`Created default badge: ${badgeId}`);
                     }
                   }
                   
-                  // Create the user's badge document with the default badge
                   await setDoc(userBadgeDocRef, {
                     earnedBadges: Object.keys(DEFAULT_BADGES)
                   });
@@ -170,7 +158,6 @@
                   console.log("Created default badge document for user");
                 }
                 
-                // Now fetch the user's badges (which should exist now)
                 const updatedBadgeDocSnap = await getDoc(userBadgeDocRef);
                 
                 if (updatedBadgeDocSnap.exists()) {
@@ -182,10 +169,8 @@
                     return;
                   }
                   
-                  // Clear the badge container
                   badgeContainer.innerHTML = "";
                   
-                  // Process each badge
                   for (const badgeId of earnedBadgeIds) {
                     try {
                       const badgeDocRef = doc(db, "badges", badgeId);
@@ -194,12 +179,10 @@
                       if (badgeDocSnap.exists()) {
                         const badgeData = badgeDocSnap.data();
                         
-                        // Get badge properties with fallbacks
                         const iconUrl = badgeData.Ikon || "";
                         const badgeName = badgeData.Navn || "Badge";
                         const badgeDesc = badgeData.Beskrivelse || "";
                         
-                        // Create image element
                         const img = document.createElement("img");
                         img.src = iconUrl;
                         img.alt = badgeName;
@@ -210,12 +193,10 @@
                         img.style.marginLeft = "5px";
                         img.style.borderRadius = "50%";
                         
-                        // Add error handling
                         img.onerror = function() {
                           console.error(`Failed to load image for badge: ${badgeId}`);
                           this.style.display = "none";
                           
-                          // Add text fallback
                           const fallbackSpan = document.createElement("span");
                           fallbackSpan.textContent = badgeName.charAt(0);
                           fallbackSpan.title = badgeName;
@@ -248,26 +229,19 @@
                 badgeContainer.textContent = "Feil ved lasting av badges.";
               }
             } else {
-              // User is signed out
               userName.textContent = "";
               badgeContainer.textContent = "";
               authBtn.textContent = "Logg inn";
               authBtn.href = "login.html";
               
-              // Remove any event listeners
               const newAuthBtn = authBtn.cloneNode(true);
               authBtn.parentNode.replaceChild(newAuthBtn, authBtn);
               authBtn = newAuthBtn;
             }
           });
         }
-        
-        // Initialize when DOM is fully loaded
         document.addEventListener('DOMContentLoaded', initializeAuth);
-        
-        // Export functions that might be needed elsewhere
-        export { auth, db };
+                export { auth, db };
     </script>
 </body>
-
 </html>
