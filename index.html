@@ -8,9 +8,14 @@
     <link rel="icon" href="https://www.iconsdb.com/icons/preview/green/leaf-xxl.png" type="image/png">
 </head>
 <body>
-    <!-- Tittel -->
-    <h1 class="logo">GreenCode</h1>
-    <!-- Navigasjonsmeny -->
+<div class="navbar-top">
+  <h1 class="logo">GreenCode</h1>
+  <div id="user-info">
+      <span id="user-name"></span>
+      <span id="badge-container">Laster badges...</span>
+      <a id="auth-btn" class="login-btn" href="#">Logg inn</a>
+  </div>
+</div>
     <div class="navbar">
         <a href="index.html">Home</a>
         <div class="dropdown">
@@ -30,7 +35,6 @@
             <div class="dropdown-content">
                 <a href="GreenCode-contactus.html">Contact Us</a>
                 <a href="GreenCode-about-us.html">About Us</a>
-
             </div>
         </div> 
         
@@ -43,22 +47,203 @@
         </div>
     </div>
 
-        <!-- Bilder -->
-<img src="https://image.forskning.no/2128008.webp?imageId=2128008&width=2116&height=1208&format=webp" alt="fancy bilde" id="hovedbilde">
+    <!-- Bilder -->
+    <img src="https://image.forskning.no/2128008.webp?imageId=2128008&width=2116&height=1208&format=webp" alt="fancy bilde" id="hovedbilde">
     
     <h2>What is Green Coding?</h2>
     <hr>
         <p>Green coding is known as green IT or sustainable IT, and aims to minimize the enviromental impact of IT operations.</p>
-        <p>Historically, the focus has been on replacing hardware with more eco-friendly alternatives or recycling old equipment. However, software’s role is increasingly recognized as a critical factor in reducing IT’s carbon footprint.</p>
+        <p>Historically, the focus has been on replacing hardware with more eco-friendly alternatives or recycling old equipment. However, software's role is increasingly recognized as a critical factor in reducing IT's carbon footprint.</p>
         <p>For example, inefficient coding practices or poorly optimized software can increase energy usage significantly. By prioritizing more efficient development practices, businesses can lower energy consumption and emissions while improving software performance and quality.</p>
     <hr>
 
- 
-      <footer>
+    <footer>
         <p>&copy; 2025 GreenCode. All rights reserved.</p>
         <a href="GreenCode-guides.html">Guides</a>
         <a href="GreenCode-contactus.html">Contact Us</a>
     </footer>
+<!-- Replace your entire Firebase script section with this solution -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyCDtb0s8if31AXSdoIao_N4sIODaeVPM98",
+    authDomain: "greencode-project-49744.firebaseapp.com",
+    projectId: "greencode-project-49744",
+    storageBucket: "greencode-project-49744.appspot.com",
+    messagingSenderId: "728982263717",
+    appId: "1:728982263717:web:dcd1f096d04cb52909fa4c",
+    measurementId: "G-8FZXZ885MN"
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  
+  // DOM elements
+  const authBtn = document.getElementById("auth-btn");
+  const badgeContainer = document.getElementById("badge-container");
+  const userName = document.getElementById("user-name");
+  
+  // Default badge data if user has no badges
+  const DEFAULT_BADGES = {
+    "Badge1": {
+      Navn: "Universalbadge",
+      Beskrivelse: "Showcasebadge",
+      Ikon: "https://i.imgur.com/W00HyeM.png" // Make sure this URL works
+    }
+  };
+  
+  // Handle auth state changes
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      // User is signed in
+      console.log("User signed in:", user.uid);
+      const name = user.displayName || "Bruker";
+      userName.textContent = `Hei, ${name}!`;
+  
+      // Update button to logout
+      authBtn.textContent = "Logg ut";
+      authBtn.href = "#";
+      authBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        signOut(auth);
+      });
+  
+      // Set a loading message
+      badgeContainer.textContent = "Laster badges...";
+  
+      try {
+        // First, check if the user has a badges document
+        const userBadgeDocRef = doc(db, "badges", user.uid);
+        const userBadgeDocSnap = await getDoc(userBadgeDocRef);
+        
+        // If no badge document exists for the user, create one with default badges
+        if (!userBadgeDocSnap.exists()) {
+          console.log("No badge document found for user. Creating default badges.");
+          
+          // First, make sure the default badges exist in the collection
+          for (const [badgeId, badgeData] of Object.entries(DEFAULT_BADGES)) {
+            const badgeRef = doc(db, "badges", badgeId);
+            const badgeSnap = await getDoc(badgeRef);
+            
+            if (!badgeSnap.exists()) {
+              // Create the badge if it doesn't exist
+              await setDoc(badgeRef, badgeData);
+              console.log(`Created default badge: ${badgeId}`);
+            }
+          }
+          
+          // Create the user's badge document with the default badge
+          await setDoc(userBadgeDocRef, {
+            earnedBadges: Object.keys(DEFAULT_BADGES)
+          });
+          
+          console.log("Created default badge document for user");
+        }
+        
+        // Now fetch the user's badges (which should exist now)
+        const updatedBadgeDocSnap = await getDoc(userBadgeDocRef);
+        
+        if (updatedBadgeDocSnap.exists()) {
+          const badgeData = updatedBadgeDocSnap.data();
+          const earnedBadgeIds = badgeData.earnedBadges || [];
+          
+          if (earnedBadgeIds.length === 0) {
+            badgeContainer.textContent = "Ingen badges.";
+            return;
+          }
+          
+          // Clear the badge container
+          badgeContainer.innerHTML = "";
+          
+          // Process each badge
+          for (const badgeId of earnedBadgeIds) {
+            try {
+              const badgeDocRef = doc(db, "badges", badgeId);
+              const badgeDocSnap = await getDoc(badgeDocRef);
+              
+              if (badgeDocSnap.exists()) {
+                const badgeData = badgeDocSnap.data();
+                console.log(`Badge data for ${badgeId}:`, badgeData);
                 
+                // Get badge properties with fallbacks
+                const iconUrl = badgeData.Ikon || "";
+                const badgeName = badgeData.Navn || "Badge";
+                const badgeDesc = badgeData.Beskrivelse || "";
+                
+                // Create test span to show we're processing
+                const testSpan = document.createElement("span");
+                testSpan.textContent = "🏆";
+                testSpan.style.fontSize = "16px";
+                testSpan.style.marginRight = "5px";
+                badgeContainer.appendChild(testSpan);
+                
+                // Create image element
+                const img = document.createElement("img");
+                img.src = iconUrl;
+                img.alt = badgeName;
+                img.title = badgeDesc || badgeName;
+                img.className = "firebase-image";
+                img.style.width = "20px";
+                img.style.height = "20px";
+                img.style.marginLeft = "5px";
+                img.style.borderRadius = "50%";
+                
+                // Add error handling
+                img.onerror = function() {
+                  console.error(`Failed to load image for badge: ${badgeId}`);
+                  this.style.display = "none";
+                  
+                  // Add text fallback
+                  const fallbackSpan = document.createElement("span");
+                  fallbackSpan.textContent = badgeName.charAt(0);
+                  fallbackSpan.title = badgeName;
+                  fallbackSpan.style.display = "inline-block";
+                  fallbackSpan.style.width = "20px";
+                  fallbackSpan.style.height = "20px";
+                  fallbackSpan.style.lineHeight = "20px";
+                  fallbackSpan.style.textAlign = "center";
+                  fallbackSpan.style.backgroundColor = "#2c7a7b";
+                  fallbackSpan.style.color = "white";
+                  fallbackSpan.style.borderRadius = "50%";
+                  fallbackSpan.style.marginLeft = "5px";
+                  fallbackSpan.style.fontSize = "12px";
+                  
+                  this.parentNode.insertBefore(fallbackSpan, this.nextSibling);
+                };
+                
+                badgeContainer.appendChild(img);
+              }
+            } catch (error) {
+              console.error(`Error fetching badge ${badgeId}:`, error);
+            }
+          }
+        } else {
+          console.error("Failed to create or retrieve badge document");
+          badgeContainer.textContent = "Feil ved lasting av badges.";
+        }
+      } catch (error) {
+        console.error("Error processing badges:", error);
+        badgeContainer.textContent = "Feil ved lasting av badges.";
+      }
+    } else {
+      // User is signed out
+      console.log("User signed out");
+      userName.textContent = "";
+      badgeContainer.textContent = "";
+      authBtn.textContent = "Logg inn";
+      authBtn.href = "login.html";
+      
+      // Remove any event listeners
+      const newAuthBtn = authBtn.cloneNode(true);
+      authBtn.parentNode.replaceChild(newAuthBtn, authBtn);
+      authBtn = newAuthBtn;
+    }
+  });
+</script>
 </body>
 </html>
