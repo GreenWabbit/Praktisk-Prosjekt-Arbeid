@@ -3,115 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logg inn - GreenCode</title>
-    <link rel="stylesheet" href="login.css">
+    <title>Green Code</title>
+    <link rel="stylesheet" href="GreenCode.css">
     <link rel="icon" href="https://www.iconsdb.com/icons/preview/green/leaf-xxl.png" type="image/png">
 </head>
 <body>
-    <div class="navbar-top">
-        <a href="index.html" class="logo">GreenCode</a>
-    </div>
-
-    <div class="login-container">
-        <h2>Logg inn</h2>
+<div class="navbar-top">
+  <h1 class="logo">GreenCode</h1>
+  <div id="user-info">
+      <span id="user-name"></span>
+      <span id="badge-container">Laster badges...</span>
+      <a id="auth-btn" class="login-btn" href="#">Logg inn</a>
+  </div>
+</div>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Articles</button>
+            <div class="dropdown-content">
+                <a href="GreenCode-user-case-studies.html">User Case Studies</a>
+                <a href="GreenCode-guides.html">Guides</a>
+                <a href="GreenCode-checklist.html">Checklist</a>
+                <a href="GreenCode-tutorials.html">Tutorials</a>
+            </div>
+        </div>
+      
+        <a href="GreenCode-carbonfootprint.html">Carbonfootprint</a>
+        <a href="https://github.com/GreenWabbit/Praktisk-Prosjekt-Arbeid/discussions" target="_blank">Forum</a>
+        <div class="dropdown">
+            <button class="dropbtn">Contact</button>
+            <div class="dropdown-content">
+                <a href="GreenCode-contactus.html">Contact Us</a>
+                <a href="GreenCode-about-us.html">About Us</a>
+            </div>
+        </div> 
         
-        <form id="loginForm" class="login-form">
-            <div class="input-group">
-                <label for="email">E-post</label>
-                <input type="email" id="email" placeholder="Din e-postadresse" required>
+        <div class="dropdown">
+            <button class="dropbtn">Badges & Challenges</button>
+            <div class="dropdown-content">
+                <a href="Code-Badges & Challenges.html">Badges</a>
+                <a href="challenges.html">Challenges</a>
             </div>
-            
-            <div class="input-group">
-                <label for="password">Passord</label>
-                <input type="password" id="password" placeholder="Ditt passord" required>
-            </div>
-            
-            <div id="error-message" class="error-message"></div>
-            
-            <button type="submit" class="submit-btn">Logg inn</button>
-            
-            <div class="forgot-password">
-                <a href="#">Glemt passord?</a>
-            </div>
-        </form>
-        
-        <div class="register-link">
-            Ny bruker? <a href="register.html">Registrer deg her</a>
         </div>
     </div>
+    <img src="https://image.forskning.no/2128008.webp?imageId=2128008&width=2116&height=1208&format=webp" alt="fancy bilde" id="hovedbilde">
     
-    <a href="index.html" class="back-home">Tilbake til forsiden</a>
+    <h2>What is Green Coding?</h2>
+    <hr>
+        <p>Green coding is known as green IT or sustainable IT, and aims to minimize the enviromental impact of IT operations.</p>
+        <p>Historically, the focus has been on replacing hardware with more eco-friendly alternatives or recycling old equipment. However, software's role is increasingly recognized as a critical factor in reducing IT's carbon footprint.</p>
+        <p>For example, inefficient coding practices or poorly optimized software can increase energy usage significantly. By prioritizing more efficient development practices, businesses can lower energy consumption and emissions while improving software performance and quality.</p>
+    <hr>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-
-        const firebaseConfig = {
-          apiKey: "AIzaSyCDtb0s8if31AXSdoIao_N4sIODaeVPM98",
-          authDomain: "greencode-project-49744.firebaseapp.com",
-          projectId: "greencode-project-49744",
-          storageBucket: "greencode-project-49744.appspot.com",
-          messagingSenderId: "728982263717",
-          appId: "1:728982263717:web:dcd1f096d04cb52909fa4c",
-          measurementId: "G-8FZXZ885MN"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const errorMessageElement = document.getElementById("error-message");
-
-        document.getElementById("loginForm").addEventListener("submit", (e) => {
-          e.preventDefault();
-          
-          errorMessageElement.textContent = "";
-          
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
-          
-          const submitBtn = document.querySelector(".submit-btn");
-          const originalBtnText = submitBtn.textContent;
-          submitBtn.textContent = "Logger inn...";
-          submitBtn.disabled = true;
-
-          signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-              window.location.href = "index.html";
-            })
-            .catch((error) => {
-              submitBtn.textContent = originalBtnText;
-              submitBtn.disabled = false;
-              
-              switch(error.code) {
-                case 'auth/user-not-found':
-                  errorMessageElement.textContent = "Ingen bruker med denne e-postadressen.";
-                  break;
-                case 'auth/wrong-password':
-                  errorMessageElement.textContent = "Feil passord. Prøv igjen.";
-                  break;
-                case 'auth/invalid-email':
-                  errorMessageElement.textContent = "Ugyldig e-postadresse.";
-                  break;
-                case 'auth/too-many-requests':
-                  errorMessageElement.textContent = "For mange forsøk. Prøv igjen senere.";
-                  break;
-                default:
-                  errorMessageElement.textContent = "Innlogging feilet: " + error.message;
-              }
-            });
-        });
-      
-
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.get('registered') === 'true') {
-    errorMessageElement.textContent = "Registreringen var vellykket! Du kan nå logge inn.";
-    errorMessageElement.style.color = "#27ae60";
-}
-
-auth.onAuthStateChanged(user => {
-    if (user) {
-        window.location.href = "index.html";
+    <footer>
+        <p>&copy; 2025 GreenCode. All rights reserved.</p>
+        <a href="GreenCode-guides.html">Guides</a>
+        <a href="GreenCode-contactus.html">Contact Us</a>
+    </footer>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyCDtb0s8if31AXSdoIao_N4sIODaeVPM98",
+    authDomain: "greencode-project-49744.firebaseapp.com",
+    projectId: "greencode-project-49744",
+    storageBucket: "greencode-project-49744.appspot.com",
+    messagingSenderId: "728982263717",
+    appId: "1:728982263717:web:dcd1f096d04cb52909fa4c",
+    measurementId: "G-8FZXZ885MN"
+  };
+  
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  
+  const authBtn = document.getElementById("auth-btn");
+  const badgeContainer = document.getElementById("badge-container");
+  const userName = document.getElementById("user-name");
+  
+  const DEFAULT_BADGES = {
+    "Badge1": {
+      Navn: "Universalbadge",
+      Beskrivelse: "Showcasebadge",
+      Ikon: "https://i.imgur.com/W00HyeM.png"
     }
-});
-    </script>
+  };
+  
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      console.log("User signed in:", user.uid);
+      const name = user.displayName || "Bruker";
+      userName.textContent = `Hei, ${name}!`;
+  
+      authBtn.textContent = "Logg ut";
+      authBtn.href = "#";
+      authBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        signOut(auth);
+      });
+  
+      badgeContainer.textContent = "Laster badges...";
+  
+      try {
+        const userBadgeDocRef = doc(db, "badges", user.uid);
+        const userBadgeDocSnap = await getDoc(userBadgeDocRef);
+        
+        if (!userBadgeDocSnap.exists()) {
+          console.log("No badge document found for user. Creating default badges.");
+          
+          for (const [badgeId, badgeData] of Object.entries(DEFAULT_BADGES)) {
+            const badgeRef = doc(db, "badges", badgeId);
+            const badgeSnap = await getDoc(badgeRef);
+            
+            if (!badgeSnap.exists()) {
+              await setDoc(badgeRef, badgeData);
+              console.log(`Created default badge: ${badgeId}`);
+            }
+          }
+          
+          await setDoc(userBadgeDocRef, {
+            earnedBadges: Object.keys(DEFAULT_BADGES)
+          });
+          
+          console.log("Created default badge document for user");
+        }
+        
+        const updatedBadgeDocSnap = await getDoc(userBadgeDocRef);
+        
+        if (updatedBadgeDocSnap.exists()) {
+          const badgeData = updatedBadgeDocSnap.data();
+          const earnedBadgeIds = badgeData.earnedBadges || [];
+          
+          if (earnedBadgeIds.length === 0) {
+            badgeContainer.textContent = "Ingen badges.";
+            return;
+          }
+          
+          badgeContainer.innerHTML = "";
+          
+          for (const badgeId of earnedBadgeIds) {
+            try {
+              const badgeDocRef = doc(db, "badges", badgeId);
+              const badgeDocSnap = await getDoc(badgeDocRef);
+              
+              if (badgeDocSnap.exists()) {
+                const badgeData = badgeDocSnap.data();
+                console.log(`Badge data for ${badgeId}:`, badgeData);
+                
+                const iconUrl = badgeData.Ikon || "";
+                const badgeName = badgeData.Navn || "Badge";
+                const badgeDesc = badgeData.Beskrivelse || "";
+                
+                const testSpan = document.createElement("span");
+                testSpan.textContent = "🏆";
+                testSpan.style.fontSize = "16px";
+                testSpan.style.marginRight = "5px";
+                badgeContainer.appendChild(testSpan);
+                
+                const img = document.createElement("img");
+                img.src = iconUrl;
+                img.alt = badgeName;
+                img.title = badgeDesc || badgeName;
+                img.className = "firebase-image";
+                img.style.width = "20px";
+                img.style.height = "20px";
+                img.style.marginLeft = "5px";
+                img.style.borderRadius = "50%";
+                
+                img.onerror = function() {
+                  console.error(`Failed to load image for badge: ${badgeId}`);
+                  this.style.display = "none";
+                  
+                  const fallbackSpan = document.createElement("span");
+                  fallbackSpan.textContent = badgeName.charAt(0);
+                  fallbackSpan.title = badgeName;
+                  fallbackSpan.style.display = "inline-block";
+                  fallbackSpan.style.width = "20px";
+                  fallbackSpan.style.height = "20px";
+                  fallbackSpan.style.lineHeight = "20px";
+                  fallbackSpan.style.textAlign = "center";
+                  fallbackSpan.style.backgroundColor = "#2c7a7b";
+                  fallbackSpan.style.color = "white";
+                  fallbackSpan.style.borderRadius = "50%";
+                  fallbackSpan.style.marginLeft = "5px";
+                  fallbackSpan.style.fontSize = "12px";
+                  
+                  this.parentNode.insertBefore(fallbackSpan, this.nextSibling);
+                };
+                
+                badgeContainer.appendChild(img);
+              }
+            } catch (error) {
+              console.error(`Error fetching badge ${badgeId}:`, error);
+            }
+          }
+        } else {
+          console.error("Failed to create or retrieve badge document");
+          badgeContainer.textContent = "Feil ved lasting av badges.";
+        }
+      } catch (error) {
+        console.error("Error processing badges:", error);
+        badgeContainer.textContent = "Feil ved lasting av badges.";
+      }
+    } else {
+      console.log("User signed out");
+      userName.textContent = "";
+      badgeContainer.textContent = "";
+      authBtn.textContent = "Logg inn";
+      authBtn.href = "login.html";
+      
+      const newAuthBtn = authBtn.cloneNode(true);
+      authBtn.parentNode.replaceChild(newAuthBtn, authBtn);
+      authBtn = newAuthBtn;
+    }
+  });
+</script>
 </body>
 </html>
