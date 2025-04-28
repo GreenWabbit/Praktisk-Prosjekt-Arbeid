@@ -72,7 +72,6 @@
         const confirmPasswordInput = document.getElementById("confirmPassword");
         const passwordStrength = document.getElementById("password-strength");
 
-        // Check password strength
         passwordInput.addEventListener("input", function() {
             const password = this.value;
             let strength = 0;
@@ -109,11 +108,9 @@
             passwordStrength.textContent = "Passordstyrke: " + feedback;
         });
 
-        // Registration form submission
         document.getElementById("registerForm").addEventListener("submit", async (e) => {
             e.preventDefault();
             
-            // Clear previous error messages
             errorMessageElement.textContent = "";
             
             const email = document.getElementById("email").value;
@@ -121,7 +118,6 @@
             const password = passwordInput.value;
             const confirmPassword = confirmPasswordInput.value;
             
-            // Validate form
             if (password !== confirmPassword) {
                 errorMessageElement.textContent = "Passordene matcher ikke.";
                 return;
@@ -132,23 +128,19 @@
                 return;
             }
             
-            // Show loading state
             const submitBtn = document.querySelector(".submit-btn");
             const originalBtnText = submitBtn.textContent;
             submitBtn.textContent = "Registrerer...";
             submitBtn.disabled = true;
 
             try {
-                // Create user account
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
                 
-                // Update user profile with display name
                 await updateProfile(user, {
                     displayName: displayName
                 });
                 
-                // Create user document in Firestore
                 await setDoc(doc(db, "users", user.uid), {
                     email: email,
                     displayName: displayName,
@@ -156,15 +148,12 @@
                     earnedBadges: []
                 });
                 
-                // Success - redirect to login page
                 window.location.href = "login.html?registered=true";
                 
             } catch (error) {
-                // Reset button
                 submitBtn.textContent = originalBtnText;
                 submitBtn.disabled = false;
                 
-                // Handle specific errors
                 switch(error.code) {
                     case 'auth/email-already-in-use':
                         errorMessageElement.textContent = "Denne e-postadressen er allerede i bruk.";
@@ -183,7 +172,6 @@
             }
         });
         
-        // Check if coming from login page with a specific message
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('needAccount') === 'true') {
             errorMessageElement.textContent = "Du må registrere en konto først.";
