@@ -1,47 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logg inn - GreenCode</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="https://www.iconsdb.com/icons/preview/green/leaf-xxl.png" type="image/png">
 </head>
 <body>
-  <h2>Login</h2>
-  <form id="loginForm">
-    <input type="email" id="email" placeholder="Email" required><br>
-    <input type="password" id="password" placeholder="Password" required><br>
-    <button type="submit">Login</button>
-  </form>
+    <div class="navbar-top">
+        <a href="index.html" class="logo">GreenCode</a>
+    </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+    <div class="login-container">
+        <h2>Logg inn</h2>
+        
+        <form id="loginForm" class="login-form">
+            <div class="input-group">
+                <label for="email">E-post</label>
+                <input type="email" id="email" placeholder="Din e-postadresse" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Passord</label>
+                <input type="password" id="password" placeholder="Ditt passord" required>
+            </div>
+            
+            <div id="error-message" class="error-message"></div>
+            
+            <button type="submit" class="submit-btn">Logg inn</button>
+            
+            <div class="forgot-password">
+                <a href="#">Glemt passord?</a>
+            </div>
+        </form>
+        
+        <div class="register-link">
+            Ny bruker? <a href="register.html">Registrer deg her</a>
+        </div>
+    </div>
+    
+    <a href="index.html" class="back-home">Tilbake til forsiden</a>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCDtb0s8if31AXSdoIao_N4sIODaeVPM98",
-      authDomain: "greencode-project-49744.firebaseapp.com",
-      projectId: "greencode-project-49744",
-      storageBucket: "greencode-project-49744.firebasestorage.app",
-      messagingSenderId: "728982263717",
-      appId: "1:728982263717:web:dcd1f096d04cb52909fa4c",
-      measurementId: "G-8FZXZ885MN"
-    };
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+        const firebaseConfig = {
+          apiKey: "AIzaSyCDtb0s8if31AXSdoIao_N4sIODaeVPM98",
+          authDomain: "greencode-project-49744.firebaseapp.com",
+          projectId: "greencode-project-49744",
+          storageBucket: "greencode-project-49744.appspot.com",
+          messagingSenderId: "728982263717",
+          appId: "1:728982263717:web:dcd1f096d04cb52909fa4c",
+          measurementId: "G-8FZXZ885MN"
+        };
 
-    document.getElementById("loginForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const errorMessageElement = document.getElementById("error-message");
 
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          alert("Login successful!");
-          window.location.href = "index.html"; // ✅ Send til nettsiden!
-        })
-        .catch((error) => {
-          alert("Error: " + error.message);
+        document.getElementById("loginForm").addEventListener("submit", (e) => {
+          e.preventDefault();
+          
+          // Clear previous error messages
+          errorMessageElement.textContent = "";
+          
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          
+          // Show loading state
+          const submitBtn = document.querySelector(".submit-btn");
+          const originalBtnText = submitBtn.textContent;
+          submitBtn.textContent = "Logger inn...";
+          submitBtn.disabled = true;
+
+          signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Login successful - redirect to main page
+              window.location.href = "index.html";
+            })
+            .catch((error) => {
+              // Reset button
+              submitBtn.textContent = originalBtnText;
+              submitBtn.disabled = false;
+              
+              // Handle specific errors with user-friendly messages
+              switch(error.code) {
+                case 'auth/user-not-found':
+                  errorMessageElement.textContent = "Ingen bruker med denne e-postadressen.";
+                  break;
+                case 'auth/wrong-password':
+                  errorMessageElement.textContent = "Feil passord. Prøv igjen.";
+                  break;
+                case 'auth/invalid-email':
+                  errorMessageElement.textContent = "Ugyldig e-postadresse.";
+                  break;
+                case 'auth/too-many-requests':
+                  errorMessageElement.textContent = "For mange forsøk. Prøv igjen senere.";
+                  break;
+                default:
+                  errorMessageElement.textContent = "Innlogging feilet: " + error.message;
+              }
+            });
         });
-    });
-  </script>
+      
+        // Add this to your login.html file, right above the closing
+
+// Check if coming from registration page
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('registered') === 'true') {
+    errorMessageElement.textContent = "Registreringen var vellykket! Du kan nå logge inn.";
+    errorMessageElement.style.color = "#27ae60"; // Green color for success
+}
+
+// Add this to your existing login script
+// Check if the user is already logged in
+auth.onAuthStateChanged(user => {
+    if (user) {
+        // User is already signed in, redirect to home page
+        window.location.href = "index.html";
+    }
+});
+    </script>
 </body>
 </html>
