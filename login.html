@@ -63,13 +63,11 @@
         document.getElementById("loginForm").addEventListener("submit", (e) => {
           e.preventDefault();
           
-          // Clear previous error messages
           errorMessageElement.textContent = "";
           
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
           
-          // Show loading state
           const submitBtn = document.querySelector(".submit-btn");
           const originalBtnText = submitBtn.textContent;
           submitBtn.textContent = "Logger inn...";
@@ -77,15 +75,12 @@
 
           signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-              // Login successful - redirect to main page
               window.location.href = "index.html";
             })
             .catch((error) => {
-              // Reset button
               submitBtn.textContent = originalBtnText;
               submitBtn.disabled = false;
               
-              // Handle specific errors with user-friendly messages
               switch(error.code) {
                 case 'auth/user-not-found':
                   errorMessageElement.textContent = "Ingen bruker med denne e-postadressen.";
@@ -105,20 +100,15 @@
             });
         });
       
-        // Add this to your login.html file, right above the closing
 
-// Check if coming from registration page
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get('registered') === 'true') {
     errorMessageElement.textContent = "Registreringen var vellykket! Du kan nå logge inn.";
-    errorMessageElement.style.color = "#27ae60"; // Green color for success
+    errorMessageElement.style.color = "#27ae60";
 }
 
-// Add this to your existing login script
-// Check if the user is already logged in
 auth.onAuthStateChanged(user => {
     if (user) {
-        // User is already signed in, redirect to home page
         window.location.href = "index.html";
     }
 });
