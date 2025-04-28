@@ -5,7 +5,6 @@
     box-sizing: border-box;
     font-family: 'Roboto', Arial, sans-serif;
 }
-
 /* Body Styling */
 body {
     background-color: #f9f9f9;
@@ -143,6 +142,49 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+/* Navbar Top Styling */
+.navbar-top {
+    width: 100%;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    color: #2c7a7b;
+    margin-bottom: 0;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto; /* This pushes the element to the right */
+}
+
+#user-name {
+    font-weight: bold;
+}
+
+#badge-container {
+    display: flex;
+    align-items: center;
+}
+
+.login-btn {
+    background-color: #2c7a7b;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #3b8c8e;
 }
 
 /* Responsive Design */
