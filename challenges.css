@@ -1,11 +1,11 @@
 :root {
-  --primary: #2c7a7b; /* Main green color from GreenCode */
-  --primary-hover: #3b8c8e; /* Hover color from GreenCode dropdown */
-  --primary-active: #4ca9a9; /* Active color from dropdown hover in GreenCode */
-  --text: #333; /* Text color from GreenCode */
-  --bg: #f9f9f9; /* Background color from GreenCode */
-  --code-bg: #f0f0f0; /* Lighter code background to match overall lighter theme */
-  --green: #2c7a7b; /* Using the site's primary green instead of bright green */
+  --primary: #2c7a7b; 
+  --primary-hover: #3b8c8e; 
+  --primary-active: #4ca9a9; 
+  --text: #333; 
+  --bg: #f9f9f9; 
+  --code-bg: #f0f0f0; 
+  --green: #2c7a7b; 
   --gray: #cccccc;
   --white: #ffffff;
 }
@@ -35,13 +35,9 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-/* Header inherits from GreenCode.css but adding full width explicitly */
 header {
   width: 100%;
 }
-
-/* Navbar Top Styling - STANDARDIZED */
 .navbar-top {
   width: 100%;
   background-color: var(--bg);
@@ -56,15 +52,12 @@ header {
   color: var(--primary);
   margin-bottom: 0;
 }
-
-/* User info container */
 #user-info {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-left: auto;
 }
-
 #user-name {
   font-weight: bold;
 }
@@ -81,14 +74,12 @@ header {
   border-radius: 5px;
   text-decoration: none;
   transition: background-color 0.3s;
-  margin-right: 10px; /* Add space between login button and theme toggle */
+  margin-right: 10px; 
 }
 
 .login-btn:hover {
   background-color: var(--primary-hover);
 }
-
-/* Theme Button - Fixed placement in top-right of navbar */
 #themeToggle {
   background: none;
   border: 2px solid var(--primary);
@@ -98,16 +89,14 @@ header {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease;
-  position: relative; /* Changed from absolute */
-  display: inline-block; /* Ensure it stays in the flow */
+  position: relative; 
+  display: inline-block;
 }
 
 #themeToggle:hover {
   background: var(--primary);
   color: white;
 }
-
-/* Firebase Image Handling - ADDED */
 .firebase-image {
   max-width: 100%;
   height: auto;
@@ -115,14 +104,12 @@ header {
   margin: 20px 0;
   display: block;
 }
-
 .badge img.firebase-image {
   width: 80px;
   height: 80px;
   object-fit: cover;
   margin: 10px auto;
 }
-
 .firebase-image:not([src]), 
 .firebase-image[src=""], 
 .firebase-image[src="undefined"], 
@@ -152,8 +139,6 @@ header {
   margin: 0 5px;
   object-fit: cover;
 }
-
-/* Navigation Bar - STANDARDIZED */
 .navbar {
   width: 100%;
   background-color: var(--primary);
@@ -192,16 +177,15 @@ header {
   max-height: auto;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  top: 100%; /* Position dropdown below the button */
-  left: 50%; /* Align dropdown with the button */
+  top: 100%; 
+  left: 50%; 
   transform: translateX(-50%);
-  z-index: 1000; /* Ensure dropdown appears above other elements */
+  z-index: 1000;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 .dropdown .dropbtn {
   background: none;
   border: none;
@@ -211,7 +195,6 @@ header {
   padding: 10px 5px;
   margin: 0 15px;
 }
-
 .dropdown-content a {
   color: white;
   padding: 5px 5px;
@@ -221,12 +204,9 @@ header {
   transition: background-color 0.3s ease;
   margin: 0;
 }
-
 .dropdown-content a:hover {
   background-color: var(--primary-active);
 }
-
-/* Challenge-specific styling starts here */
 main {
   display: flex;
   justify-content: center;
@@ -238,7 +218,6 @@ main {
   padding: 30px 20px;
   margin-top: 20px;
 }
-
 .challenge-container {
   background-color: auto;
   border-radius: 8px;
@@ -247,20 +226,16 @@ main {
   max-width: 750px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
-
-/* Progress Circle */
 .circle-container {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
 }
-
 .progress-ring__background {
   fill: none;
   stroke: #e6e6e6;
   stroke-width: 10;
 }
-
 .progress-ring__circle {
   fill: none;
   stroke: var(--primary);
@@ -272,21 +247,16 @@ main {
   transform-origin: center;
   transition: stroke-dashoffset 0.5s ease;
 }
-
 .progress-text {
   fill: var(--primary);
   font-size: 20px;
   dominant-baseline: middle;
 }
-
-/* Question */
 #questionText {
   text-align: center;
   margin-bottom: 20px;
   font-size: 18px;
 }
-
-/* Code Boxes */
 .code-snippet {
   background-color: var(--code-bg);
   color: var(--text);
@@ -298,8 +268,6 @@ main {
   margin: 10px 0;
   text-align: left;
 }
-
-/* Buttons */
 #options {
   display: flex;
   justify-content: center;
@@ -307,7 +275,6 @@ main {
   flex-wrap: wrap;
   margin-top: 20px;
 }
-
 #options button,
 #checkBtn,
 #nextBtn {
@@ -320,23 +287,18 @@ main {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
 #options button:hover,
 #checkBtn:hover,
 #nextBtn:hover {
   background-color: var(--primary-hover);
   transform: scale(1.05);
 }
-
 #options button.correct {
   background-color: #28a745;
 }
-
 #options button.wrong {
   background-color: #dc3545;
 }
-
-/* Explanation + Feedback */
 #explanation {
   background-color: #f5f5f5;
   border-left: 5px solid var(--primary);
@@ -347,18 +309,14 @@ main {
   animation: fadeIn 0.4s ease;
   text-align: left;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
-/* Code Editor */
 #inputArea {
   margin-top: 20px;
   width: 100%;
 }
-
 #userCode {
   width: 100%;
   padding: 12px;
@@ -371,45 +329,33 @@ main {
   resize: vertical;
   height: 140px;
 }
-
-/* Test Feedback */
 #testResults {
   margin-top: 15px;
   font-family: monospace;
   text-align: left;
 }
-
-/* End Screen */
 #resultScreen {
   text-align: center;
   margin-top: 30px;
 }
-
 #scoreText {
   font-size: 18px;
   margin: 10px 0;
 }
-
 .tip {
   color: var(--primary);
   font-style: italic;
 }
-
-/* Utility */
 .hidden {
   display: none !important;
 }
-
-/* Responsive Design */
 @media (max-width: 768px) {
   main {
     padding: 20px 15px;
   }
-  
   .challenge-container {
     padding: 20px;
   }
-  
   #options button,
   #checkBtn,
   #nextBtn {
@@ -439,8 +385,6 @@ main {
     flex-wrap: wrap;
   }
 }
-
-/* Input field styling for code challenges */
 .code-input-wrapper {
   display: inline-block;
   position: relative;
@@ -468,8 +412,6 @@ body.dark .code-input {
   background-color: rgba(0, 0, 0, 0.2);
   color: var(--text);
 }
-
-/* Make restart button match the style of other buttons */
 #resultScreen button {
   background-color: var(--primary);
   color: white;
@@ -487,9 +429,8 @@ body.dark .code-input {
   transform: scale(1.05);
 }
 
-/* Universal button styling for consistency */
 button {
-  background-color: #2c7a7b; /* Fallback if var doesn't work */
+  background-color: #2c7a7b; 
   background-color: var(--primary);
   color: white;
   border: none;
@@ -502,23 +443,20 @@ button {
 }
 
 button:hover {
-  background-color: #3b8c8e; /* Fallback */
+  background-color: #3b8c8e; 
   background-color: var(--primary-hover);
   transform: scale(1.05);
 }
 
-/* Fixed positioning to ensure theme toggle stays in the navbar */
 .navbar-top #themeToggle {
-  position: static; /* Ensure it flows with other elements */
-  margin: 0 0 0 5px; /* Add space to the left */
+  position: static; 
+  margin: 0 0 0 5px; 
 }
 
 #themeToggle:hover {
   background: var(--primary);
   color: white;
 }
-
-/* Result screen specific styling */
 #resultScreen button {
   margin-top: 15px;
   display: inline-block;
