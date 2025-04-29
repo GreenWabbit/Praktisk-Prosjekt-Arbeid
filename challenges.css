@@ -35,9 +35,11 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 header {
   width: 100%;
 }
+
 .navbar-top {
   width: 100%;
   background-color: var(--bg);
@@ -52,12 +54,14 @@ header {
   color: var(--primary);
   margin-bottom: 0;
 }
+
 #user-info {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-left: auto;
 }
+
 #user-name {
   font-weight: bold;
 }
@@ -80,6 +84,7 @@ header {
 .login-btn:hover {
   background-color: var(--primary-hover);
 }
+
 #themeToggle {
   background: none;
   border: 2px solid var(--primary);
@@ -97,6 +102,7 @@ header {
   background: var(--primary);
   color: white;
 }
+
 .firebase-image {
   max-width: 100%;
   height: auto;
@@ -104,12 +110,14 @@ header {
   margin: 20px 0;
   display: block;
 }
+
 .badge img.firebase-image {
   width: 80px;
   height: 80px;
   object-fit: cover;
   margin: 10px auto;
 }
+
 .firebase-image:not([src]), 
 .firebase-image[src=""], 
 .firebase-image[src="undefined"], 
@@ -139,9 +147,11 @@ header {
   margin: 0 5px;
   object-fit: cover;
 }
+
+/* Navbar styles from GreenCode.css */
 .navbar {
   width: 100%;
-  background-color: var(--primary);
+  background-color: #2c7a7b;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -161,7 +171,7 @@ header {
 }
 
 .navbar a:hover {
-  background-color: var(--primary-hover);
+  background-color: #3b8c8e;
   border-radius: 5px;
 }
 
@@ -172,7 +182,7 @@ header {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: var(--primary-hover);
+  background-color: #3b8c8e;
   min-width: 100%;
   max-height: auto;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
@@ -186,6 +196,7 @@ header {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 .dropdown .dropbtn {
   background: none;
   border: none;
@@ -195,6 +206,7 @@ header {
   padding: 10px 5px;
   margin: 0 15px;
 }
+
 .dropdown-content a {
   color: white;
   padding: 5px 5px;
@@ -204,9 +216,11 @@ header {
   transition: background-color 0.3s ease;
   margin: 0;
 }
+
 .dropdown-content a:hover {
-  background-color: var(--primary-active);
+  background-color: #4ca9a9;
 }
+
 main {
   display: flex;
   justify-content: center;
@@ -218,6 +232,7 @@ main {
   padding: 30px 20px;
   margin-top: 20px;
 }
+
 .challenge-container {
   background-color: auto;
   border-radius: 8px;
@@ -226,16 +241,19 @@ main {
   max-width: 750px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
+
 .circle-container {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
 }
+
 .progress-ring__background {
   fill: none;
   stroke: #e6e6e6;
   stroke-width: 10;
 }
+
 .progress-ring__circle {
   fill: none;
   stroke: var(--primary);
@@ -247,16 +265,19 @@ main {
   transform-origin: center;
   transition: stroke-dashoffset 0.5s ease;
 }
+
 .progress-text {
   fill: var(--primary);
   font-size: 20px;
   dominant-baseline: middle;
 }
+
 #questionText {
   text-align: center;
   margin-bottom: 20px;
   font-size: 18px;
 }
+
 .code-snippet {
   background-color: var(--code-bg);
   color: var(--text);
@@ -268,6 +289,7 @@ main {
   margin: 10px 0;
   text-align: left;
 }
+
 #options {
   display: flex;
   justify-content: center;
@@ -275,6 +297,7 @@ main {
   flex-wrap: wrap;
   margin-top: 20px;
 }
+
 #options button,
 #checkBtn,
 #nextBtn {
@@ -287,18 +310,22 @@ main {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 #options button:hover,
 #checkBtn:hover,
 #nextBtn:hover {
   background-color: var(--primary-hover);
   transform: scale(1.05);
 }
+
 #options button.correct {
   background-color: #28a745;
 }
+
 #options button.wrong {
   background-color: #dc3545;
 }
+
 #explanation {
   background-color: #f5f5f5;
   border-left: 5px solid var(--primary);
@@ -309,14 +336,17 @@ main {
   animation: fadeIn 0.4s ease;
   text-align: left;
 }
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
 #inputArea {
   margin-top: 20px;
   width: 100%;
 }
+
 #userCode {
   width: 100%;
   padding: 12px;
@@ -329,33 +359,41 @@ main {
   resize: vertical;
   height: 140px;
 }
+
 #testResults {
   margin-top: 15px;
   font-family: monospace;
   text-align: left;
 }
+
 #resultScreen {
   text-align: center;
   margin-top: 30px;
 }
+
 #scoreText {
   font-size: 18px;
   margin: 10px 0;
 }
+
 .tip {
   color: var(--primary);
   font-style: italic;
 }
+
 .hidden {
   display: none !important;
 }
+
 @media (max-width: 768px) {
   main {
     padding: 20px 15px;
   }
+  
   .challenge-container {
     padding: 20px;
   }
+  
   #options button,
   #checkBtn,
   #nextBtn {
@@ -364,15 +402,14 @@ main {
   }
   
   .navbar-top {
-    flex-wrap: wrap;
-    padding: 10px;
+    flex-direction: column;
+    text-align: center;
   }
   
   #user-info {
-    flex-wrap: nowrap;
-    align-items: center;
     margin-left: 0;
     margin-top: 10px;
+    flex-direction: column;
   }
   
   .navbar a {
@@ -384,7 +421,20 @@ main {
   .navbar {
     flex-wrap: wrap;
   }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 16px;
+  }
 }
+
 .code-input-wrapper {
   display: inline-block;
   position: relative;
@@ -412,6 +462,7 @@ body.dark .code-input {
   background-color: rgba(0, 0, 0, 0.2);
   color: var(--text);
 }
+
 #resultScreen button {
   background-color: var(--primary);
   color: white;
@@ -422,6 +473,7 @@ body.dark .code-input {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   margin-top: 15px;
+  display: inline-block;
 }
 
 #resultScreen button:hover {
@@ -430,7 +482,6 @@ body.dark .code-input {
 }
 
 button {
-  background-color: #2c7a7b; 
   background-color: var(--primary);
   color: white;
   border: none;
@@ -443,7 +494,6 @@ button {
 }
 
 button:hover {
-  background-color: #3b8c8e; 
   background-color: var(--primary-hover);
   transform: scale(1.05);
 }
@@ -456,8 +506,4 @@ button:hover {
 #themeToggle:hover {
   background: var(--primary);
   color: white;
-}
-#resultScreen button {
-  margin-top: 15px;
-  display: inline-block;
 }
