@@ -4,6 +4,13 @@
     box-sizing: border-box;
     font-family: 'Roboto', Arial, sans-serif;
 }
+
+/* Prevent horizontal scrolling */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     background-color: #f9f9f9;
     color: #333;
@@ -13,7 +20,9 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    width: 100%;
 }
+
 h1 {
     color: #2c7a7b;
     font-size: 36px;
@@ -194,6 +203,26 @@ p {
     border-radius: 50%;
     margin: 0 5px;
     object-fit: cover;
+}
+
+/* Fix for large image causing overflow */
+#hovedbilde {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Make sure all content respects the container width */
+footer {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+hr {
+    width: 100%;
+    margin: 20px 0;
 }
 
 @media (max-width: 768px) {
