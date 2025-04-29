@@ -1,253 +1,254 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Code - Challenges</title>
-    <link rel="stylesheet" href="GreenCode.css">
-    <link rel="stylesheet" href="challenges.css">
-    <link rel="icon" href="https://www.iconsdb.com/icons/preview/green/leaf-xxl.png" type="image/png">
-</head>
-<body>
-<header>
-<div class="navbar-top">
-  <h1 class="logo">GreenCode</h1>
-  <div id="user-info">
-      <span id="user-name"></span>
-      <span id="badge-container">Laster badges...</span>
-      <a id="auth-btn" class="login-btn" href="#">Logg inn</a>
-      <button id="themeToggle" title="Toggle Theme">🌓</button>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Green Code - Challenges</title>
+      <link rel="stylesheet" href="GreenCode.css">
+      <link rel="stylesheet" href="challenges.css">
+      <link rel="icon" href="https://www.iconsdb.com/icons/preview/green/leaf-xxl.png" type="image/png">
+  </head>
+  <body>
+  <header>
+  <div class="navbar-top">
+    <h1 class="logo">GreenCode</h1>
+    <div id="user-info">
+        <span id="user-name"></span>
+        <span id="badge-container">Laster badges...</span>
+        <a id="auth-btn" class="login-btn" href="#">Logg inn</a>
+        <button id="themeToggle" title="Toggle Theme">🌓</button>
+    </div>
   </div>
-</div>
-    <div class="navbar">
-        <a href="index.html">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">Articles</button>
-            <div class="dropdown-content">
-                <a href="GreenCode-user-case-studies.html">User Case Studies</a>
-                <a href="GreenCode-guides.html">Guides</a>
-                <a href="GreenCode-checklist.html">Checklist</a>
-                <a href="GreenCode-tutorials.html">Tutorials</a>
-            </div>
-        </div>
-        <a href="GreenCode-carbonfootprint.html">Carbonfootprint</a>
-        <a href="https://github.com/GreenWabbit/Praktisk-Prosjekt-Arbeid/discussions" target="_blank">Forum</a>
-        <div class="dropdown">
-            <button class="dropbtn">Contact</button>
-            <div class="dropdown-content">
-                <a href="GreenCode-contactus.html">Contact Us</a>
-                <a href="GreenCode-about-us.html">About Us</a>
-        </div> 
-         <div class="dropdown">
-            <button class="dropbtn">Badges & Challenges</button>
-            <div class="dropdown-content">
-                <a href="Code-Badges & Challenges.html">Badges</a>
-                <a href="challenges.html">Challenges</a>
-            </div>
-        </div>
-    </div>
-</header>
-<h1>Developer Challenges & Certifications</h1> 
-<main>
-  <div class="challenge-container">
-    <h2>Green Coding Challenge</h2>
-    <div class="circle-container">
-      <svg class="progress-ring" width="120" height="120">
-        <circle class="progress-ring__background" r="50" cx="60" cy="60" />
-        <circle class="progress-ring__circle" r="50" cx="60" cy="60" />
-        <text x="50%" y="55%" text-anchor="middle" class="progress-text" id="progressPercent">0%</text>
-      </svg>
-    </div>
-    <div id="questionText"></div>
-    <div id="codeA" class="code-snippet"></div>
-    <div id="codeB" class="code-snippet"></div>
+      <div class="navbar">
+          <a href="index.html">Home</a>
+          <div class="dropdown">
+              <button class="dropbtn">Articles</button>
+              <div class="dropdown-content">
+                  <a href="GreenCode-user-case-studies.html">User Case Studies</a>
+                  <a href="GreenCode-guides.html">Guides</a>
+                  <a href="GreenCode-checklist.html">Checklist</a>
+                  <a href="GreenCode-tutorials.html">Tutorials</a>
+              </div>
+          </div>
+          <a href="GreenCode-carbonfootprint.html">Carbonfootprint</a>
+          <a href="https://github.com/GreenWabbit/Praktisk-Prosjekt-Arbeid/discussions" target="_blank">Forum</a>
+          <div class="dropdown">
+              <button class="dropbtn">Contact</button>
+              <div class="dropdown-content">
+                  <a href="GreenCode-contactus.html">Contact Us</a>
+                  <a href="GreenCode-about-us.html">About Us</a>
+              </div>
+          </div> 
+          <div class="dropdown">
+              <button class="dropbtn">Badges & Challenges</button>
+              <div class="dropdown-content">
+                  <a href="Code-Badges & Challenges.html">Badges</a>
+                  <a href="challenges.html">Challenges</a>
+              </div>
+          </div>
+      </div>
+  </header>
+  <h1>Developer Challenges & Certifications</h1> 
+  <main>
+    <div class="challenge-container">
+      <h2>Green Coding Challenge</h2>
+      <div class="circle-container">
+        <svg class="progress-ring" width="120" height="120">
+          <circle class="progress-ring__background" r="50" cx="60" cy="60" />
+          <circle class="progress-ring__circle" r="50" cx="60" cy="60" />
+          <text x="50%" y="55%" text-anchor="middle" class="progress-text" id="progressPercent">0%</text>
+        </svg>
+      </div>
+      <div id="questionText"></div>
+      <div id="codeA" class="code-snippet"></div>
+      <div id="codeB" class="code-snippet"></div>
 
-    <div id="questionBox">
-    </div>    
-    <div id="options"></div>
-    <div id="inputArea" style="display: none;">
-      <textarea id="userCode"></textarea>
-      <button id="checkBtn" onclick="checkInputAnswer()">Run Tests</button>
-      <div id="testResults"></div>
+      <div id="questionBox">
+      </div>    
+      <div id="options"></div>
+      <div id="inputArea" style="display: none;">
+        <textarea id="userCode"></textarea>
+        <button id="checkBtn" onclick="checkInputAnswer()">Run Tests</button>
+        <div id="testResults"></div>
+      </div>
+      <div id="explanation"></div>
+      <button id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
+      <div id="resultScreen" class="hidden">
+      <h3>You completed the challenge!</h3>
+      <p id="scoreText"></p>
+      <p class="tip">Eco Tip: Efficient code = greener apps!</p>
+      <button onclick="location.reload()">Restart</button>
+      </div>
     </div>
-    <div id="explanation"></div>
-    <button id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
-    <div id="resultScreen" class="hidden">
-    <h3>You completed the challenge!</h3>
-    <p id="scoreText"></p>
-    <p class="tip">Eco Tip: Efficient code = greener apps!</p>
-    <button onclick="location.reload()">Restart</button>
+  </main>
+  <footer>
+    <p>&copy; 2025 GreenCode - Sustainable Web Development</p>
+    <div>
+      <a href="GreenCode-contactus.html">Contact</a>
+      <a href="GreenCode-about-us.html">About</a>
+      <a href="GreenCode-privacy.html">Privacy Policy</a>
     </div>
-  </div>
-</main>
-<footer>
-  <p>&copy; 2025 GreenCode - Sustainable Web Development</p>
-  <div>
-    <a href="GreenCode-contactus.html">Contact</a>
-    <a href="GreenCode-about-us.html">About</a>
-    <a href="GreenCode-privacy.html">Privacy Policy</a>
-  </div>
-</footer>
+  </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-<script defer src="Challenges-QB.js"></script>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-  import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
-  
-    const firebaseConfig = {
-    apiKey: "AIzaSyCDtb0s8if31AXSdoIao_N4sIODaeVPM98",
-    authDomain: "greencode-project-49744.firebaseapp.com",
-    projectId: "greencode-project-49744",
-    storageBucket: "greencode-project-49744.appspot.com",
-    messagingSenderId: "728982263717",
-    appId: "1:728982263717:web:dcd1f096d04cb52909fa4c",
-    measurementId: "G-8FZXZ885MN"
-  };
-  
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-  
-  const DEFAULT_BADGES = {
-    "Badge1": {
-      Navn: "Universalbadge",
-      Beskrivelse: "Showcasebadge",
-      Ikon: "https://i.imgur.com/W00HyeM.png"
-    }
-  };
-  
-  function initializeAuth() {
-    const authBtn = document.getElementById("auth-btn");
-    const badgeContainer = document.getElementById("badge-container");
-    const userName = document.getElementById("user-name");
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script defer src="Challenges-QB.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
     
-    if (!authBtn || !badgeContainer || !userName) {
-      console.log("Auth elements not found on page, skipping auth initialization");
-      return;
-    }
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const name = user.displayName || "Bruker";
-        userName.textContent = `Hei, ${name}!`;
-  
-        authBtn.textContent = "Logg ut";
-        authBtn.href = "#";
-        authBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          signOut(auth);
-        });
-
-        badgeContainer.textContent = "Laster badges...";
+      const firebaseConfig = {
+      apiKey: "AIzaSyCDtb0s8if31AXSdoIao_N4sIODaeVPM98",
+      authDomain: "greencode-project-49744.firebaseapp.com",
+      projectId: "greencode-project-49744",
+      storageBucket: "greencode-project-49744.appspot.com",
+      messagingSenderId: "728982263717",
+      appId: "1:728982263717:web:dcd1f096d04cb52909fa4c",
+      measurementId: "G-8FZXZ885MN"
+    };
     
-        try {
-          const userBadgeDocRef = doc(db, "badges", user.uid);
-          const userBadgeDocSnap = await getDoc(userBadgeDocRef);
-          
-          if (!userBadgeDocSnap.exists()) {
-            console.log("No badge document found for user. Creating default badges.");
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    
+    const DEFAULT_BADGES = {
+      "Badge1": {
+        Navn: "Universalbadge",
+        Beskrivelse: "Showcasebadge",
+        Ikon: "https://i.imgur.com/W00HyeM.png"
+      }
+    };
+    
+    function initializeAuth() {
+      const authBtn = document.getElementById("auth-btn");
+      const badgeContainer = document.getElementById("badge-container");
+      const userName = document.getElementById("user-name");
+      
+      if (!authBtn || !badgeContainer || !userName) {
+        console.log("Auth elements not found on page, skipping auth initialization");
+        return;
+      }
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          const name = user.displayName || "Bruker";
+          userName.textContent = `Hei, ${name}!`;
+    
+          authBtn.textContent = "Logg ut";
+          authBtn.href = "#";
+          authBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            signOut(auth);
+          });
+
+          badgeContainer.textContent = "Laster badges...";
+      
+          try {
+            const userBadgeDocRef = doc(db, "badges", user.uid);
+            const userBadgeDocSnap = await getDoc(userBadgeDocRef);
             
-            for (const [badgeId, badgeData] of Object.entries(DEFAULT_BADGES)) {
-              const badgeRef = doc(db, "badges", badgeId);
-              const badgeSnap = await getDoc(badgeRef);
+            if (!userBadgeDocSnap.exists()) {
+              console.log("No badge document found for user. Creating default badges.");
               
-              if (!badgeSnap.exists()) {
-                await setDoc(badgeRef, badgeData);
-                console.log(`Created default badge: ${badgeId}`);
-              }
-            }
-                await setDoc(userBadgeDocRef, {
-              earnedBadges: Object.keys(DEFAULT_BADGES)
-            });
-            
-            console.log("Created default badge document for user");
-          }
-          const updatedBadgeDocSnap = await getDoc(userBadgeDocRef);
-          
-          if (updatedBadgeDocSnap.exists()) {
-            const badgeData = updatedBadgeDocSnap.data();
-            const earnedBadgeIds = badgeData.earnedBadges || [];
-            
-            if (earnedBadgeIds.length === 0) {
-              badgeContainer.textContent = "Ingen badges.";
-              return;
-            }
-            
-            badgeContainer.innerHTML = "";
-            
-            for (const badgeId of earnedBadgeIds) {
-              try {
-                const badgeDocRef = doc(db, "badges", badgeId);
-                const badgeDocSnap = await getDoc(badgeDocRef);
+              for (const [badgeId, badgeData] of Object.entries(DEFAULT_BADGES)) {
+                const badgeRef = doc(db, "badges", badgeId);
+                const badgeSnap = await getDoc(badgeRef);
                 
-                if (badgeDocSnap.exists()) {
-                  const badgeData = badgeDocSnap.data();
-                  
-                  const iconUrl = badgeData.Ikon || "";
-                  const badgeName = badgeData.Navn || "Badge";
-                  const badgeDesc = badgeData.Beskrivelse || "";
-                  
-                  const img = document.createElement("img");
-                  img.src = iconUrl;
-                  img.alt = badgeName;
-                  img.title = badgeDesc || badgeName;
-                  img.className = "firebase-image";
-                  img.style.width = "20px";
-                  img.style.height = "20px";
-                  img.style.marginLeft = "5px";
-                  img.style.borderRadius = "50%";
-                  
-                  img.onerror = function() {
-                    console.error(`Failed to load image for badge: ${badgeId}`);
-                    this.style.display = "none";
-                    
-                    const fallbackSpan = document.createElement("span");
-                    fallbackSpan.textContent = badgeName.charAt(0);
-                    fallbackSpan.title = badgeName;
-                    fallbackSpan.style.display = "inline-block";
-                    fallbackSpan.style.width = "20px";
-                    fallbackSpan.style.height = "20px";
-                    fallbackSpan.style.lineHeight = "20px";
-                    fallbackSpan.style.textAlign = "center";
-                    fallbackSpan.style.backgroundColor = "#2c7a7b";
-                    fallbackSpan.style.color = "white";
-                    fallbackSpan.style.borderRadius = "50%";
-                    fallbackSpan.style.marginLeft = "5px";
-                    fallbackSpan.style.fontSize = "12px";
-                    
-                    this.parentNode.insertBefore(fallbackSpan, this.nextSibling);
-                  };
-                  
-                  badgeContainer.appendChild(img);
+                if (!badgeSnap.exists()) {
+                  await setDoc(badgeRef, badgeData);
+                  console.log(`Created default badge: ${badgeId}`);
                 }
-              } catch (error) {
-                console.error(`Error fetching badge ${badgeId}:`, error);
               }
+                  await setDoc(userBadgeDocRef, {
+                earnedBadges: Object.keys(DEFAULT_BADGES)
+              });
+              
+              console.log("Created default badge document for user");
             }
-          } else {
-            console.error("Failed to create or retrieve badge document");
+            const updatedBadgeDocSnap = await getDoc(userBadgeDocRef);
+            
+            if (updatedBadgeDocSnap.exists()) {
+              const badgeData = updatedBadgeDocSnap.data();
+              const earnedBadgeIds = badgeData.earnedBadges || [];
+              
+              if (earnedBadgeIds.length === 0) {
+                badgeContainer.textContent = "Ingen badges.";
+                return;
+              }
+              
+              badgeContainer.innerHTML = "";
+              
+              for (const badgeId of earnedBadgeIds) {
+                try {
+                  const badgeDocRef = doc(db, "badges", badgeId);
+                  const badgeDocSnap = await getDoc(badgeDocRef);
+                  
+                  if (badgeDocSnap.exists()) {
+                    const badgeData = badgeDocSnap.data();
+                    
+                    const iconUrl = badgeData.Ikon || "";
+                    const badgeName = badgeData.Navn || "Badge";
+                    const badgeDesc = badgeData.Beskrivelse || "";
+                    
+                    const img = document.createElement("img");
+                    img.src = iconUrl;
+                    img.alt = badgeName;
+                    img.title = badgeDesc || badgeName;
+                    img.className = "firebase-image";
+                    img.style.width = "20px";
+                    img.style.height = "20px";
+                    img.style.marginLeft = "5px";
+                    img.style.borderRadius = "50%";
+                    
+                    img.onerror = function() {
+                      console.error(`Failed to load image for badge: ${badgeId}`);
+                      this.style.display = "none";
+                      
+                      const fallbackSpan = document.createElement("span");
+                      fallbackSpan.textContent = badgeName.charAt(0);
+                      fallbackSpan.title = badgeName;
+                      fallbackSpan.style.display = "inline-block";
+                      fallbackSpan.style.width = "20px";
+                      fallbackSpan.style.height = "20px";
+                      fallbackSpan.style.lineHeight = "20px";
+                      fallbackSpan.style.textAlign = "center";
+                      fallbackSpan.style.backgroundColor = "#2c7a7b";
+                      fallbackSpan.style.color = "white";
+                      fallbackSpan.style.borderRadius = "50%";
+                      fallbackSpan.style.marginLeft = "5px";
+                      fallbackSpan.style.fontSize = "12px";
+                      
+                      this.parentNode.insertBefore(fallbackSpan, this.nextSibling);
+                    };
+                    
+                    badgeContainer.appendChild(img);
+                  }
+                } catch (error) {
+                  console.error(`Error fetching badge ${badgeId}:`, error);
+                }
+              }
+            } else {
+              console.error("Failed to create or retrieve badge document");
+              badgeContainer.textContent = "Feil ved lasting av badges.";
+            }
+          } catch (error) {
+            console.error("Error processing badges:", error);
             badgeContainer.textContent = "Feil ved lasting av badges.";
           }
-        } catch (error) {
-          console.error("Error processing badges:", error);
-          badgeContainer.textContent = "Feil ved lasting av badges.";
+        } else {
+          userName.textContent = "";
+          badgeContainer.textContent = "";
+          authBtn.textContent = "Logg inn";
+          authBtn.href = "login.html";
+          
+          const newAuthBtn = authBtn.cloneNode(true);
+          authBtn.parentNode.replaceChild(newAuthBtn, authBtn);
+          authBtn = newAuthBtn;
         }
-      } else {
-        userName.textContent = "";
-        badgeContainer.textContent = "";
-        authBtn.textContent = "Logg inn";
-        authBtn.href = "login.html";
-        
-        const newAuthBtn = authBtn.cloneNode(true);
-        authBtn.parentNode.replaceChild(newAuthBtn, authBtn);
-        authBtn = newAuthBtn;
-      }
-    });
-  }
-  document.addEventListener('DOMContentLoaded', initializeAuth);
-  
-export { auth, db };
-</script>
-</body>
-</html>
+      });
+    }
+    document.addEventListener('DOMContentLoaded', initializeAuth);
+    
+  export { auth, db };
+  </script>
+  </body>
+  </html>
