@@ -25,7 +25,6 @@ body {
     color: white;
 }
 
-
 li {
     margin-left: 20px;
     margin-right: 20px;
@@ -46,6 +45,7 @@ ul, ol {
     margin: 0 30px;
     text-align: center;
 }
+
 h1 {
     color: #2c7a7b;
     font-size: 36px;
@@ -98,6 +98,13 @@ p {
     z-index: 1000; 
 }
 
+.right {
+
+    margin-left: auto;
+    margin-right: right;
+    width: 5%;
+}
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -145,6 +152,7 @@ img {
     height: auto;
     border-radius: 8px;
     margin: 20px 0;
+    
 }
 .firebase-image {
     max-width: 100%;
